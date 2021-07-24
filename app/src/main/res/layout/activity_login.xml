@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_bk"
-    tools:context=".MainActivity">
+    tools:context=".login">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btn_log"
                 android:layout_width="288dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
