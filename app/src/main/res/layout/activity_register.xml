@@ -7,12 +7,13 @@
     android:background="@drawable/login_bk"
 
     tools:context=".register">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical"
@@ -36,6 +37,7 @@
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -51,6 +53,7 @@
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -66,6 +69,7 @@
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -81,6 +85,7 @@
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -96,6 +101,7 @@
                 android:inputType="date" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -111,6 +117,7 @@
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -126,6 +133,7 @@
                 android:inputType="number" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -141,13 +149,14 @@
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress3"
+                android:id="@+id/mdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -156,13 +165,14 @@
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/register"
                 android:layout_width="288dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -170,11 +180,12 @@
                 app:backgroundTint="#2191F3" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="115dp"
             android:layout_weight="1"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
