@@ -1,5 +1,7 @@
 package com.example.pfe_dwm;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -34,6 +36,7 @@ public class PutData extends Thread {
             httpURLConnection.setRequestMethod(this.method);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
+
             OutputStream outputStream = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, UTF8));
             StringBuilder post_data = new StringBuilder();

@@ -32,21 +32,23 @@ public class register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        nom=findViewById(R.id.nom);
+        prenom=findViewById(R.id.prenom);
+        cin=findViewById(R.id.cin);
+        tele=findViewById(R.id.tele);
+        cnss=findViewById(R.id.cnss);
+        adresse=findViewById(R.id.adresse);
+        date=findViewById(R.id.date);
+        email=findViewById(R.id.email);
+        password=findViewById(R.id.mdp);
+
         register = findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                nom=findViewById(R.id.nom);
-                prenom=findViewById(R.id.prenom);
-                cin=findViewById(R.id.cin);
-                tele=findViewById(R.id.tele);
-                cnss=findViewById(R.id.cnss);
-                adresse=findViewById(R.id.adresse);
-                date=findViewById(R.id.date);
-                email=findViewById(R.id.email);
-                password=findViewById(R.id.mdp);
+
                 try {
 
 
@@ -66,15 +68,16 @@ public class register extends AppCompatActivity {
                         fields[6]="cnss";
 
                         String[] data = new String[7];
-                        fields[0]=nom.getText().toString();
-                        fields[1]=prenom.getText().toString();
-                        fields[2]=cin.getText().toString();
-                        fields[3]=adresse.getText().toString();
-                        fields[4]=tele.getText().toString();
-                        fields[5]=date.getText().toString();
-                        fields[6]=cnss.getText().toString();
+                        data[0]=nom.getText().toString();
+                        data[1]=prenom.getText().toString();
+                        data[2]=cin.getText().toString();
+                        data[3]=adresse.getText().toString();
+                        data[4]=tele.getText().toString();
+                        data[5]=date.getText().toString();
+                        data[6]=cnss.getText().toString();
 
-                        PutData putData = new PutData("https://10.0.2.2/php_scripts/signup.php","POST",fields,data);
+
+                        PutData putData = new PutData("http://192.168.43.214:8080/php_scripts/signup.php","POST",fields,data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
@@ -88,7 +91,7 @@ public class register extends AppCompatActivity {
                 catch(Exception e) {
                 //End Read data from URL
 
-                Toast.makeText(getApplicationContext(),"Button khedam a requte limakhdamach",Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(),"Button khedam a requete limakhdamach",Toast.LENGTH_LONG);
                 }
             }
         });
