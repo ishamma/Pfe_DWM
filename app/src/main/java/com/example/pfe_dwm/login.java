@@ -45,7 +45,7 @@ public class login extends AppCompatActivity {
 
 
                 String sql = "SELECT  * FROM `account` where user_name = '" + username.getText().toString() + "' and password = '" + password.getText().toString()+"'";
-                HashMap<String, String> params = new HashMap<>();
+                HashMap<String, String> params = new HashMap<String, String>();
                 params.put("sql", sql);
 
                 PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
