@@ -28,7 +28,7 @@ public class login extends AppCompatActivity {
     String result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getActionBar().setSubtitle("Login");
+        //getActionBar().setSubtitle("Login");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button btn1= findViewById(R.id.btn_log);
@@ -60,17 +60,19 @@ public class login extends AppCompatActivity {
                         //}
                         if(output!=null){
                             try {
-                                if(output.getJSONObject(0).getInt("id")!= 0){
-                                    String nom,prenom,adress;
-                                    int id;
-                                    JSONObject user = output.getJSONObject(0);
+                                if(output.getJSONObject(0).getInt("user_id")!= 0){
+                                    String nom,email,date_creation;
+                                    int id,id_role;
+                                    JSONObject account = output.getJSONObject(0);
 
-                                    id = user.getInt("id");
-                                    nom = user.getString("nom");
-                                    prenom = user.getString("prenom");
-                                    adress = user.getString("adresse");
+                                    id = account.getInt("user_id");
+                                    nom = account.getString("user_name");
+                                    email = account.getString("email");
+                                    date_creation = account.getString("date_creation");
+                                    id_role = account.getInt("id_role");
 
-                                  //  Session.id = id; Session.adress= adress; Session.nom = nom; Session.prenom = prenom;
+
+                                    //  Session.id = id; Session.adress= adress; Session.nom = nom; Session.prenom = prenom;
                                     Intent i = new Intent(login.this, Accueil.class);
                                     startActivity(i);}
                             } catch (JSONException e) {
