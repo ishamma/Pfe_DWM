@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaCodecInfo;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,8 +70,8 @@ public class login extends AppCompatActivity {
                                     date_creation = account.getString("date_creation");
                                     id_role = account.getInt("id_role");
 
-
-                                    //  Session.id = id; Session.adress= adress; Session.nom = nom; Session.prenom = prenom;
+                                    Session.id = id; Session.user_name= nom;
+                                    Session.email = email; Session.dateCreation = date_creation;Session.id_role = id_role;
                                     Intent i = new Intent(login.this, Accueil.class);
                                     startActivity(i);}
                             } catch (JSONException e) {
