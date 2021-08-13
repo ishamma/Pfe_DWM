@@ -21,7 +21,7 @@ import com.google.android.material.navigation.NavigationView;
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header = navigationView.getHeaderView(0);
         TextView username = (TextView) header.findViewById(R.id.username);
-        username.setText("TEST");
+        username.setText(Session.user_name);
 
 
 //        Handler handler = new Handler();
