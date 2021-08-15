@@ -4,165 +4,197 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/registrer"
 
     tools:context=".register">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/nom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Entrez votre nom"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/prenom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Entrez votre prenom"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/cin"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Entrez votre cin"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/adresse"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Entrez votre adresse"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Entrez votre date de naissance"
-                android:inputType="date" />
+                android:inputType="date"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/cnss"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Entrez votre type cnss"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/tele"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Entrez votre télephone"
-                android:inputType="number" />
+                android:inputType="number"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Entrez votre email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/mdp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Mot de pass"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
@@ -174,18 +206,14 @@
             <Button
                 android:id="@+id/register"
                 android:layout_width="288dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:text="S'inscrire"
-                app:backgroundTint="#2191F3" />
+                app:backgroundTint="#1f1f1f" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="115dp"
-            android:layout_weight="1"
-            android:orientation="vertical" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

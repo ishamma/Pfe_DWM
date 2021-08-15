@@ -4,8 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bk"
+    android:background="@drawable/log"
     tools:context=".login">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="138dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginRight="137dp"
+        android:layout_marginBottom="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -30,11 +46,16 @@
             <EditText
                 android:id="@+id/txtemail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint="Entrez votre email"
-                android:inputType="textEmailAddress" />
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="20dp"
+                android:inputType="textEmailAddress"
+
+                />
 
         </LinearLayout>
 
@@ -46,39 +67,44 @@
             <EditText
                 android:id="@+id/txtpassword"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:ems="10"
-                android:hint="Mot de pass"
+                android:hint=" Mot de pass"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="20dp"
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <Button
                 android:id="@+id/btn_log"
-                android:layout_width="288dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Se connecter"
-                app:backgroundTint="#2191F3" />
+                app:backgroundTint="#605F5F"
+                android:background="@drawable/btn_round_connecter"/>
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="317dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="30dp"
             android:gravity="right"
             android:text="Creer votre compte"
-            android:textColor="#2192F3" />
+            android:textColor="#605F5F" />
 
     </LinearLayout>
 
