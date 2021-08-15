@@ -2,14 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:icon="@drawable/list"
-        android:title="Mes Rendez-vous"/>
+        android:title="Rendez-vous"/>
 
     <item
         android:icon="@drawable/calendrier"
         android:title="Calendrier" />
 
-    <item android:icon="@drawable/edit"
-        android:title="Gestion profile" />
     <item
         android:icon="@drawable/ic_baseline_power_settings_new_24"
         android:title="Log Out" />
