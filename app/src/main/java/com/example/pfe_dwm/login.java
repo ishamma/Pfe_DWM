@@ -43,7 +43,7 @@ public class login extends AppCompatActivity {
 //                startActivity(intent);
 
 
-                String sql = "SELECT  * FROM `account` where user_name = '" + username.getText().toString() + "' and password = '" + password.getText().toString()+"'";
+                String sql = "SELECT  * FROM `account` where email = '" + username.getText().toString() + "' and password = '" + password.getText().toString()+"'";
                 HashMap<String, String> params = new HashMap<String, String>();
                 params.put("sql", sql);
 
@@ -72,6 +72,9 @@ public class login extends AppCompatActivity {
 
                                     Session.id = id; Session.user_name= nom;
                                     Session.email = email; Session.dateCreation = date_creation;Session.id_role = id_role;
+//                                    if (id_role==3){}
+//                                    else if (id_role==3){}
+//                                    else {}
                                     Intent i = new Intent(login.this, Accueil.class);
                                     startActivity(i);}
                             } catch (JSONException e) {

@@ -3,6 +3,7 @@ package com.example.pfe_dwm;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,8 +53,11 @@ public class PerformNetworkRequest extends AsyncTask<Void, Void, JSONArray> {
         RequestHandler requestHandler = new RequestHandler();
         String responseJson = requestHandler.sendPostRequest(url,params);
         JSONArray j = null;
+        Log.i("Message",responseJson);
         try {
+
             j = new JSONArray(responseJson);
+
 
         } catch (JSONException e) {
             e.printStackTrace();

@@ -23,14 +23,17 @@ import com.example.pfe_dwm.PutData;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-public class register extends AppCompatActivity {
+import org.json.JSONArray;
 
-    EditText nom,prenom,cin,tele,cnss,adresse,email,password,date;
-    Button register ;
+public class register extends AppCompatActivity {
+TextView nom ,prenom,cin,tele,cnss,adresse,date,email,password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+//        getSupportActionBar().setSubtitle("أنشا حساب جديد");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nom=findViewById(R.id.nom);
         prenom=findViewById(R.id.prenom);
@@ -42,57 +45,40 @@ public class register extends AppCompatActivity {
         email=findViewById(R.id.email);
         password=findViewById(R.id.mdp);
 
-        register = findViewById(R.id.register);
+        Button register  = findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                String sql = "INSERT INTO account( user_name, email, password, id_role)"+" VALUES ('test','test','123456',1)" ;
+                /// params for sql requete
+                HashMap<String, String> params = new HashMap<>();
+                params.put("nom",nom.getText().toString());
+                params.put("prenom",prenom.getText().toString());
+                params.put("cin",cin.getText().toString());
+                params.put("tele",tele.getText().toString());
+                params.put("cnss",cnss.getText().toString());
+                params.put("adresse",adresse.getText().toString());
+                params.put("date",date.getText().toString());
+                params.put("email",email.getText().toString());
+                params.put("password",password.getText().toString());
+                params.put("role","3");
+                //SendOnChannel1(v);
+
+                PerformNetworkRequest request = new PerformNetworkRequest("https://ihne.000webhostapp.com/api.php?apicall=register", params, new PerformNetworkRequest.AsyncResponse() {
 
 
-                try {
-
-
-                //Starting Read data from URL
-                Handler handler = new Handler();
-                handler.post(new Runnable() {
                     @Override
-                    public void run() {
-
-                        String[] fields = new String[7];
-                        fields[0]="nom_patient";
-                        fields[1]="prenom_patient";
-                        fields[2]="CIN";
-                        fields[3]="adress_patient";
-                        fields[4]="tel_patient";
-                        fields[5]="date_naiss";
-                        fields[6]="cnss";
-
-                        String[] data = new String[7];
-                        data[0]=nom.getText().toString();
-                        data[1]=prenom.getText().toString();
-                        data[2]=cin.getText().toString();
-                        data[3]=adresse.getText().toString();
-                        data[4]=tele.getText().toString();
-                        data[5]=date.getText().toString();
-                        data[6]=cnss.getText().toString();
+                    public void processFinish(JSONArray output) {
 
 
-                        PutData putData = new PutData("http://192.168.43.214:8080/php_scripts/signup.php","POST",fields,data);
-                        if (putData.startPut()) {
-                            if (putData.onComplete()) {
-                                String result = putData.getResult();
+                        Intent i = new Intent(register.this,login.class);
+                        startActivity(i);
 
-                                Log.i("putData", result);
-                            }
-                        }
                     }
                 });
-                }
-                catch(Exception e) {
-                //End Read data from URL
+                request.execute();
 
-                Toast.makeText(getApplicationContext(),"Button khedam a requete limakhdamach",Toast.LENGTH_LONG);
-                }
             }
         });
 
