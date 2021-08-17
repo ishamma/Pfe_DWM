@@ -106,6 +106,13 @@
             android:text="Creer votre compte"
             android:textColor="#605F5F" />
 
+        <Button
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            app:backgroundTint="#AE5656" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
