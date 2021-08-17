@@ -46,7 +46,10 @@ public class pieChart extends AppCompatActivity {
         PieDataSet pieDataSet =new PieDataSet(rdv,"");
         pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         pieDataSet.setValueTextColor(Color.WHITE);
-        pieDataSet.setValueTextSize(10f);
+        pieDataSet.setValueTextSize(8f);
+        piechart.setEntryLabelColor(Color.WHITE);
+        piechart.setEntryLabelTextSize(8f);
+
 
 
 

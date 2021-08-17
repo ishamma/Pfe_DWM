@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PFE_DWM"
         android:usesCleartextTraffic="true">
-        <activity android:name=".pieChart"></activity>
+        <activity android:name=".rdv_par_patient"></activity>
+        <activity android:name=".pieChart" />
         <activity android:name=".secretaire" />
         <activity android:name=".medecin" />
         <activity android:name=".nav_header" />
