@@ -17,9 +17,9 @@ public class PerformNetworkRequest extends AsyncTask<Void, Void, JSONArray> {
     Context con;
     //the parameters
     HashMap<String, String> params;
-
+public static JSONArray jsonarray=new JSONArray();
     public interface AsyncResponse {
-        void processFinish(JSONArray output);
+        void processFinish(JSONArray output) throws JSONException;
     }
 
     public AsyncResponse delegated = null;
@@ -41,7 +41,11 @@ public class PerformNetworkRequest extends AsyncTask<Void, Void, JSONArray> {
     //this method will give the response from the request
     @Override
     protected void onPostExecute(JSONArray s) {
-        delegated.processFinish(s);
+        try {
+            delegated.processFinish(s);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -54,10 +58,11 @@ public class PerformNetworkRequest extends AsyncTask<Void, Void, JSONArray> {
         String responseJson = requestHandler.sendPostRequest(url,params);
         JSONArray j = null;
         Log.i("Message",responseJson);
+
         try {
 
             j = new JSONArray(responseJson);
-
+            jsonarray=j;
 
         } catch (JSONException e) {
             e.printStackTrace();
