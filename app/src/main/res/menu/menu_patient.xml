@@ -6,7 +6,7 @@
 
     <item
         android:icon="@drawable/calendrier"
-        android:title="Calendrier" />
+        android:title="Reserver un Rendez-Vous" />
 
     <item android:icon="@drawable/edit"
         android:title="Gestion profile" />
