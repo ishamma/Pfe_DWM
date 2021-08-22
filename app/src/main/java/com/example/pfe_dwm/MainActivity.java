@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            String[][] takin = new String[PerformNetworkRequest.jsonarray.length()][2];
+            String[][] takin = new String[PerformNetworkRequest.jsonarray.length()][4];
         for (int i = 0; i < PerformNetworkRequest.jsonarray.length(); i++) {
             JSONObject allClass = PerformNetworkRequest.jsonarray.getJSONObject(i);
             takin[i] = new String[]{allClass.getString("email"),

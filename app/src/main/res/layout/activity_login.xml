@@ -113,6 +113,13 @@
             android:text="Button"
             app:backgroundTint="#AE5656" />
 
+        <Button
+            android:id="@+id/nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menus"
+            app:backgroundTint="#AE5656" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
