@@ -19,13 +19,7 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header_layout"
-        app:menu="@menu/menu_patient" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,5 +39,11 @@ support des connaissances dans les domaines scientifiques, économiques et socia
 notamment à l’aide des machines automatique."
             android:textColor="@color/black" />
     </LinearLayout>
-
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header_layout"
+        app:menu="@menu/menu_patient" />
 </androidx.drawerlayout.widget.DrawerLayout>
