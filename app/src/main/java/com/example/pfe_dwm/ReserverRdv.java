@@ -33,8 +33,8 @@ import java.util.HashMap;
 public class ReserverRdv extends AppCompatActivity {
 
     ArrayList <String> arrayList = new ArrayList<>();
-
-
+    Button reserver;
+    AutoCompleteTextView date,creneau , desc , cnss;
     DrawerLayout mDrawerLayout ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +95,42 @@ public class ReserverRdv extends AppCompatActivity {
         ArrayAdapter Myadapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,arrayList);
         creneaux.setAdapter(Myadapter);
+
+
+
+        date=findViewById(R.id.lbldate);
+        creneau=findViewById(R.id.auto);
+        cnss=findViewById(R.id.txtcnss);
+        desc=findViewById(R.id.txtdesc);
+        reserver=findViewById(R.id.Résérver);
+        reserver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /// params for sql requete
+                HashMap<String, String> params = new HashMap<>();
+                params.put("creneau",creneau.getText().toString());
+                params.put("cnss",cnss.getText().toString());
+                params.put("desc",desc.getText().toString());
+                params.put("date",date.getText().toString());
+
+               // params.put("role","3");
+                //SendOnChannel1(v);
+
+                PerformNetworkRequest request = new PerformNetworkRequest("https://ihne.000webhostapp.com/api.php?apicall=insertRDV", params, new PerformNetworkRequest.AsyncResponse() {
+
+
+                    @Override
+                    public void processFinish(JSONArray output) {
+
+
+                        Intent i = new Intent(getApplicationContext(),MesRendezVous.class);
+                        startActivity(i);
+
+                    }
+                });
+                request.execute();
+            }
+        });
     }
 
     public  void Navigation(){

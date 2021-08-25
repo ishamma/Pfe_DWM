@@ -22,8 +22,6 @@
 
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -106,12 +104,13 @@
             >
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txt22"
+                android:id="@+id/txtcns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="CNSS">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/txtcnss"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#f1f1f0"
@@ -136,11 +135,11 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtdesc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="#f1f1f0"
 
-                    />
+                    android:backgroundTint="#f1f1f0" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
