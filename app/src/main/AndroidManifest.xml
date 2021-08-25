@@ -14,7 +14,6 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".MyData"></activity>
         <activity android:name=".CustomAdapter" />
-        <activity android:name=".cards" />
         <activity android:name=".Profile" />
         <activity android:name=".ReserverRdv" />
         <activity android:name=".MesRendezVous" />

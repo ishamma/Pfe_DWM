@@ -23,6 +23,8 @@ public class Tabs extends AppCompatActivity {
     private ExploreFragment exploreFragment;
     private  FlightsFragment flightsFragment;
     private TravelFragment travelFragment;
+    private rdv_list RDVlist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +37,12 @@ public class Tabs extends AppCompatActivity {
         exploreFragment = new ExploreFragment();
         travelFragment = new TravelFragment();
         flightsFragment = new FlightsFragment();
+        RDVlist = new rdv_list();
 
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
-        viewPagerAdapter.addFragment(exploreFragment, "Explore");
+        viewPagerAdapter.addFragment(RDVlist, "RDV");
         viewPagerAdapter.addFragment(flightsFragment, "Flights");
         viewPagerAdapter.addFragment(travelFragment, "Travel");
         viewPager.setAdapter(viewPagerAdapter);
