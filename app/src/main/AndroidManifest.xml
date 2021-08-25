@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PFE_DWM"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".MyData"></activity>
+        <activity android:name=".CustomAdapter" />
+        <activity android:name=".cards" />
+        <activity android:name=".Profile" />
         <activity android:name=".ReserverRdv" />
         <activity android:name=".MesRendezVous" />
         <activity android:name=".Tabs" />
