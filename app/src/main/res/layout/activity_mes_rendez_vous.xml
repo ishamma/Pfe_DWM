@@ -37,13 +37,11 @@ android:background="@drawable/acceuil">
         android:padding="20dp"
         >
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="L’informatique "
-            android:textColor="@color/black" />
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/list_rdv"
+       />
     </LinearLayout>
     </ScrollView>
     <com.google.android.material.navigation.NavigationView

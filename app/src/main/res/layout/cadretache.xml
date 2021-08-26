@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="4dp"
-        android:background="@color/mdtp_red">
+        android:background="#45628d">
 
 
         <TextView
@@ -26,17 +26,44 @@
             android:layout_marginLeft="22dp"
             android:layout_marginTop="25dp"
             android:text="Tache"
-            android:textColor="#2d2d2d"
+            android:textColor="#fff"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/second_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="103dp"
+            android:layout_marginLeft="103dp"
+            android:layout_marginTop="24dp"
+            android:text="Tache2"
+            android:textColor="#fff"
             android:textSize="17sp" />
 
         <ImageView
             android:id="@+id/imagedelete"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/user_image"
-            android:layout_alignParentRight="true" />
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/delete_rdv" />
+
+        <ImageView
+            android:id="@+id/imageEdit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/edit_rdv" />
 
     </RelativeLayout>
 
