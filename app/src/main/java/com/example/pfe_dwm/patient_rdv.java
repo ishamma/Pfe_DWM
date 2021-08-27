@@ -23,7 +23,7 @@ import java.util.HashMap;
 public class patient_rdv extends AppCompatActivity {
     private TextView name, date;
     private CalendarView calendrier;
-    private RadioGroup time;
+    private RadioGroup time,timeap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,23 +32,30 @@ public class patient_rdv extends AppCompatActivity {
         calendrier= findViewById(R.id.datePicker);
         date = findViewById(R.id.maDate);
         time = findViewById(R.id.radioC);
+        timeap = findViewById(R.id.radioap);
         name.setText(Session.user_name);
         calendrier.setMinDate(System.currentTimeMillis() - 1000);
         ArrayList<String> ih = new ArrayList<>();
+        ArrayList<String> nouha = new ArrayList<>();
         ih.add("9:00");
         ih.add("10:00");
         ih.add("11:00");
         ih.add("12:00");
-        ih.add("14:00");
-        ih.add("15:00");
-        ih.add("16:00");
-        ih.add("17:00");
-        ih.add("18:00");
+        nouha.add("14:00");
+        nouha.add("15:00");
+        nouha.add("16:00");
+        nouha.add("17:00");
+
 
         for ( String heure: ih ) {
             RadioButton rb = new RadioButton(this);
             rb.setText(heure);
             time.addView(rb);
+        }
+        for ( String heureap: nouha   ) {
+            RadioButton rb = new RadioButton(this);
+            rb.setText(heureap);
+            timeap.addView(rb);
         }
 
         calendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
