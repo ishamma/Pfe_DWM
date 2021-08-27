@@ -34,7 +34,8 @@ public class ReserverRdv extends AppCompatActivity {
 
     ArrayList <String> arrayList = new ArrayList<>();
     Button reserver;
-    AutoCompleteTextView date,creneau , desc , cnss;
+    AutoCompleteTextView creneau ;
+    EditText date, cnss, desc;
     DrawerLayout mDrawerLayout ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
