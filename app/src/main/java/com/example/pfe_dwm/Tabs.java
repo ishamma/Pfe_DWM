@@ -23,7 +23,7 @@ public class Tabs extends AppCompatActivity {
     private ExploreFragment exploreFragment;
     private  FlightsFragment flightsFragment;
     private TravelFragment travelFragment;
-    private rdv_list RDVlist;
+    private notifFragment RDVlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class Tabs extends AppCompatActivity {
         exploreFragment = new ExploreFragment();
         travelFragment = new TravelFragment();
         flightsFragment = new FlightsFragment();
-        RDVlist = new rdv_list();
+        RDVlist = new notifFragment();
 
         tabLayout.setupWithViewPager(viewPager);
 
