@@ -203,7 +203,7 @@
         <LinearLayout
             android:id="@+id/linearLayout10"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="94dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:padding="10dp"

@@ -53,54 +53,71 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
             android:orientation="vertical">
 
-            <CalendarView
-                android:id="@+id/calendarView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" />
-
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="10dp"
-                android:text="01/01/1999"
-                android:textColor="@color/ihneBlue"
+                android:text="Veuillez sélectionner un Rendez vous"
+                android:textColor="@color/black"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:orientation="horizontal">
+
+                <CalendarView
+                    android:id="@+id/datePicker"
+                    android:layout_width="272dp"
+                    android:layout_height="267dp"
+                    android:layout_gravity="center" />
+
+                <RadioGroup
+                    android:id="@+id/radioC"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="113dp"
+                    android:layout_height="54dp"
+                    app:srcCompat="@drawable/ic_baseline_access_time_24" />
+
+                <TextView
+                    android:id="@+id/maDate"
+                    android:layout_width="265dp"
+                    android:layout_height="41dp"
+                    android:layout_marginLeft="-50dp"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:text="01/01/1999 00:00"
+                    android:textColor="@color/ihneBlue"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/menu"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-
-                android:hint="Creneaux">
-
-                <AutoCompleteTextView
-                    android:id="@+id/auto"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/bg_round"
-                    android:inputType="none"
-
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+            android:orientation="vertical"/>
 
         <LinearLayout
             android:layout_width="match_parent"
