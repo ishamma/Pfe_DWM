@@ -21,8 +21,6 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -85,8 +83,9 @@
             android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -129,8 +128,7 @@
             android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -172,8 +170,7 @@
             android:layout_height="70dp"
             android:orientation="horizontal"
             android:padding="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+            app:layout_constraintStart_toStartOf="parent">
 
             <EditText
                 android:id="@+id/txtadress"
@@ -193,8 +190,7 @@
             android:layout_weight="1"
             android:orientation="horizontal"
             android:padding="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+            app:layout_constraintStart_toStartOf="parent">
 
             <EditText
                 android:id="@+id/txtemail"
@@ -209,12 +205,11 @@
         <LinearLayout
             android:id="@+id/linearLayout10"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="112dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:padding="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+            app:layout_constraintStart_toStartOf="parent">
 
             <EditText
                 android:id="@+id/txtpass"
@@ -228,26 +223,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="127dp"
             android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+            android:padding="20dp"
+            app:layout_constraintStart_toStartOf="parent">
 
             <Button
                 android:id="@+id/btnretour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/btn_round"
                 android:text="Retour"
-                android:background="@drawable/btn_round"/>
+                android:layout_marginRight="20dp" />
 
             <Button
                 android:id="@+id/btnvalider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Valider"
-                android:background="@drawable/btn_round"/>
+                android:background="@drawable/btn_round"
+                android:text="Valider" />
         </LinearLayout>
 
 
