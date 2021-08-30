@@ -27,20 +27,16 @@ public class MesRendezVous extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mes_rendez_vous);
+        if(Session.id==0){
+            startActivity(new Intent(this,login.class));
+        }
+
+
+
         frameLayout = findViewById(R.id.list_rdv);
         Rdv_list = new rdv_list();
 
-        //////////////////////Button pour ouvrir naviagtion ////////////////////
-        toolbar = findViewById(R.id.toolbarrdv);
-        setSupportActionBar(toolbar);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
-                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
-        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        //navigationView.setNavigationItemSelectedListener(this);
-        //////////////////////////////////////////
         loadFragment(Rdv_list);
         Navigation();
 
@@ -55,6 +51,18 @@ public class MesRendezVous extends AppCompatActivity {
         transaction.commit();
     }
     public  void Navigation(){
+
+        //////////////////////Button pour ouvrir naviagtion ////////////////////
+        toolbar = findViewById(R.id.toolbarrdv);
+        setSupportActionBar(toolbar);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        //navigationView.setNavigationItemSelectedListener(this);
+        //////////////////////////////////////////
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -64,17 +72,26 @@ public class MesRendezVous extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.acceuil_patient: {
+                        startActivity(new Intent(getApplicationContext(),Accueil.class));
+                        break;
+                    }
 
                     case R.id.mesrdv: {
                         startActivity(new Intent(getApplicationContext(),MesRendezVous.class));
                         break;
                     }
                     case R.id.calendrier: {
-                        startActivity(new Intent(getApplicationContext(),ReserverRdv.class));
+                        startActivity(new Intent(getApplicationContext(),patient_rdv.class));
                         break;
                     }
                     case R.id.profile: {
                         startActivity(new Intent(getApplicationContext(),Profile.class));
+                        break;
+                    }
+                    case R.id.log_out: {
+                        Session.id=0;
+                        startActivity(new Intent(getApplicationContext(),login.class));
                         break;
                     }
                 }

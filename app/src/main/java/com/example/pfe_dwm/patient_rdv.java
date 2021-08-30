@@ -10,6 +10,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.RadioButton;
@@ -29,7 +31,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class patient_rdv extends AppCompatActivity {
-    private TextView name, date;
+    private TextView date;
     private CalendarView calendrier;
     private RadioGroup time,timeap;
     String Ndate;
@@ -39,12 +41,15 @@ public class patient_rdv extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_rdv);
-        name = findViewById(R.id.name_patient);
+        if(Session.id==0){
+            startActivity(new Intent(this,login.class));
+        }
+
+
         calendrier= findViewById(R.id.datePicker);
         date = findViewById(R.id.maDate);
         time = findViewById(R.id.radioC);
         timeap = findViewById(R.id.radioap);
-        name.setText(Session.user_name);
         calendrier.setMinDate(System.currentTimeMillis() - 1000);
 
         //////////////////////Button pour ouvrir naviagtion ////////////////////
@@ -122,9 +127,11 @@ public class patient_rdv extends AppCompatActivity {
 
         time = findViewById(R.id.radioC);
         timeap = findViewById(R.id.radioap);
+        time.removeAllViews();
+        timeap.removeAllViews();
         for ( int i = 0 ; i < 4 ; i++ ) {
             RadioButton rb = new RadioButton(getApplicationContext());
-            rb.setText(lst.get(i));
+            rb.setText(lst.get(i)+":00");
             rb.setHint("22");
             time.addView(rb);
         }
@@ -136,6 +143,47 @@ public class patient_rdv extends AppCompatActivity {
         }
         lst.clear();
 
+
+    }
+
+    public  void Navigation(){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        Menu menu = navigationView.getMenu();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.acceuil_patient: {
+                        startActivity(new Intent(getApplicationContext(),Accueil.class));
+                        break;
+                    }
+
+                    case R.id.mesrdv: {
+                        startActivity(new Intent(getApplicationContext(),MesRendezVous.class));
+                        break;
+                    }
+                    case R.id.calendrier: {
+                        startActivity(new Intent(getApplicationContext(),patient_rdv.class));
+                        break;
+                    }
+                    case R.id.profile: {
+                        startActivity(new Intent(getApplicationContext(),Profile.class));
+                        break;
+                    }
+                    case R.id.log_out: {
+                        Session.id=0;
+                        startActivity(new Intent(getApplicationContext(),login.class));
+                        break;
+                    }
+                }
+                //close navigation drawer
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
 
     }
 

@@ -40,12 +40,11 @@ public class Tabs extends AppCompatActivity {
         exploreFragment = new ExploreFragment();
         travelFragment = new TravelFragment();
         flightsFragment = new FlightsFragment();
-        RDVlist = new notifFragment();
 
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
-        viewPagerAdapter.addFragment(RDVlist, "RDV");
+        viewPagerAdapter.addFragment(exploreFragment, "RDV");
         viewPagerAdapter.addFragment(flightsFragment, "Flights");
         viewPagerAdapter.addFragment(travelFragment, "Travel");
         viewPager.setAdapter(viewPagerAdapter);

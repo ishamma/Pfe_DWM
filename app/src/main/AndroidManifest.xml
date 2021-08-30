@@ -17,7 +17,6 @@
         <activity android:name=".MyData" />
         <activity android:name=".CustomAdapter" />
         <activity android:name=".Profile" />
-        <activity android:name=".ReserverRdv" />
         <activity android:name=".MesRendezVous" />
         <activity android:name=".Tabs" />
         <activity android:name=".MainActivity" />

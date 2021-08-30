@@ -27,6 +27,9 @@ import com.google.android.material.navigation.NavigationView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_accueil);
+        if(Session.id==0){
+              startActivity(new Intent(this,login.class));
+        }
 
 
 
@@ -76,17 +79,26 @@ import com.google.android.material.navigation.NavigationView;
              @Override
              public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                  switch (item.getItemId()) {
+                     case R.id.acceuil_patient: {
+                         startActivity(new Intent(getApplicationContext(),Accueil.class));
+                         break;
+                     }
 
                      case R.id.mesrdv: {
                          startActivity(new Intent(getApplicationContext(),MesRendezVous.class));
                          break;
                      }
                      case R.id.calendrier: {
-                         startActivity(new Intent(getApplicationContext(),ReserverRdv.class));
+                         startActivity(new Intent(getApplicationContext(),patient_rdv.class));
                          break;
                      }
                      case R.id.profile: {
                          startActivity(new Intent(getApplicationContext(),Profile.class));
+                         break;
+                     }
+                     case R.id.log_out: {
+                         Session.id=0;
+                         startActivity(new Intent(getApplicationContext(),login.class));
                          break;
                      }
                  }

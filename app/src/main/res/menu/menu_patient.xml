@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:icon="@drawable/home_icon"
+        android:id="@+id/acceuil_patient"
+        android:title="Acceuil"/>
+
     <item android:icon="@drawable/list"
         android:id="@+id/mesrdv"
         android:title="Mes Rendez-vous"/>
@@ -16,7 +20,9 @@
         android:title="Gestion profile" />
     <item
         android:icon="@drawable/ic_baseline_power_settings_new_24"
-        android:title="Log Out" />
+        android:title="Log Out"
+        android:id="@+id/log_out"
+        />
 
 
 </menu>

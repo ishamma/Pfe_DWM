@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<item android:icon="@drawable/list"
+    <item android:icon="@drawable/home_icon"
+        android:id="@+id/acceuil_medcin"
+        android:title="Acceuil"/>
+
+    <item android:icon="@drawable/list"
     android:title="Rendez-vous"/>
 
-<item
+    <item
     android:icon="@drawable/calendrier"
     android:title="Calendrier" />
     <item android:icon="@drawable/secretaire_gestion"
         android:title="Gestion secrétaire" />
-<item android:icon="@drawable/edit"
+    <item android:icon="@drawable/edit"
     android:title="Gestion profile" />
-<item
+    <item
     android:icon="@drawable/ic_baseline_power_settings_new_24"
     android:title="Log Out" />
 
