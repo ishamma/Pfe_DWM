@@ -72,11 +72,13 @@ public class login extends AppCompatActivity {
 
                                     Session.id = id; Session.user_name= nom;
                                     Session.email = email; Session.dateCreation = date_creation;Session.id_role = id_role;
-//                                    if (id_role==3){}
-//                                    else if (id_role==3){}
-//                                    else {}
-                                    Intent i = new Intent(login.this, Accueil.class);
-                                    startActivity(i);}
+                                    if (id_role==3){  Intent i = new Intent(login.this, Accueil.class);
+                                        startActivity(i);}
+                                    else if (id_role==2){  Intent i = new Intent(login.this, medecin.class);
+                                        startActivity(i);}
+                                    else if(id_role==1) {  Intent i = new Intent(login.this, secretaire.class);
+                                        startActivity(i);}
+                                  }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -101,7 +103,7 @@ public class login extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(),patient_rdv.class));
             }
         });
 

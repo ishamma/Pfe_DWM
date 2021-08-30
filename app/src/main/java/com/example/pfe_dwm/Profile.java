@@ -1,7 +1,10 @@
 package com.example.pfe_dwm;
 
 import androidx.annotation.NonNull;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -16,7 +19,8 @@ import com.google.android.material.navigation.NavigationView;
 public class Profile extends AppCompatActivity {
 
     EditText nom , prenom , cin , date,cnss,tele , adress,email,password;
-    DrawerLayout mDrawerLayout;
+   private DrawerLayout mDrawerLayout;
+   private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +32,19 @@ public class Profile extends AppCompatActivity {
     }
 
     public  void Navigation(){
+        //////////////////////Button pour ouvrir naviagtion ////////////////////
+        toolbar = findViewById(R.id.toolbarpr);
+        setSupportActionBar(toolbar);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layoutpr);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.profile,R.string.profile);
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        //navigationView.setNavigationItemSelectedListener(this);
+        //////////////////////////////////////////
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+       // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

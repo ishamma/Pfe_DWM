@@ -1,7 +1,11 @@
 package com.example.pfe_dwm;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +32,9 @@ public class patient_rdv extends AppCompatActivity {
     private TextView name, date;
     private CalendarView calendrier;
     private RadioGroup time,timeap;
-    ArrayList<String> ih;
+    String Ndate;
+    Toolbar toolbar;
+    DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,36 +47,31 @@ public class patient_rdv extends AppCompatActivity {
         name.setText(Session.user_name);
         calendrier.setMinDate(System.currentTimeMillis() - 1000);
 
-//        ArrayList<String> nouha = new ArrayList<>();
-//        ih.add("9:00");
-//        ih.add("10:00");
-//        ih.add("11:00");
-//        ih.add("12:00");
-//        ih.add("14:00");
-//        ih.add("15:00");
-//        ih.add("16:00");
-//        ih.add("17:00");
+        //////////////////////Button pour ouvrir naviagtion ////////////////////
+        toolbar = findViewById(R.id.toolbarres);
+        setSupportActionBar(toolbar);
 
-
-//        for ( String heure: ih ) {
-//            RadioButton rb = new RadioButton(this);
-//            rb.setText(heure);
-//            time.addView(rb);
-//        }
-//        for ( String heureap: nouha   ) {
-//            RadioButton rb = new RadioButton(this);
-//            rb.setText(heureap);
-//            timeap.addView(rb);
-//        }
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        //navigationView.setNavigationItemSelectedListener(this);
+        //////////////////////////////////////////
 
         calendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                //ih.clear();
-//                Log.i("IH list",ih.toString());
 
-                ih = new ArrayList<>();
-                String Ndate = String.valueOf(dayOfMonth)+"/"+String.valueOf(month)+"/"+String.valueOf(year);
+                time = findViewById(R.id.radioC);
+                timeap = findViewById(R.id.radioap);
+                time.removeAllViews();
+                timeap.removeAllViews();
+
+
+
+                ArrayList<String>  ih = new ArrayList<>();
+                 Ndate = String.valueOf(dayOfMonth)+"/"+String.valueOf(month)+"/"+String.valueOf(year);
                 date.setText(Ndate);
 
                 String sql = "SELECT  * FROM `creneaux` ";
@@ -87,9 +88,9 @@ public class patient_rdv extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         }
-                        Log.i("IH list",ih.toString());
-                        fill(ih);
 
+                        fill(ih);
+                        ih.clear();
                     }
                 });
                 request.execute();
@@ -105,14 +106,12 @@ public class patient_rdv extends AppCompatActivity {
         time.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                Log.i("LOG","Entering");
                 RadioButton radioButton = group.findViewById(checkedId);
                 String index = radioButton.getText().toString();
-                Log.i("LOG",index);
                 Toast toast=Toast.makeText(getApplicationContext(),index,Toast.LENGTH_SHORT);
                 toast.setMargin(50,50);
                 toast.show();
-                date.setText(date.getText()+" "+index+""+":00");
+                date.setText(Ndate+" "+index+""+":00");
 
             }
         });
@@ -120,7 +119,6 @@ public class patient_rdv extends AppCompatActivity {
     }
 
     public  void fill(ArrayList<String> lst){
-        Log.i("IH list",lst.toString());
 
         time = findViewById(R.id.radioC);
         timeap = findViewById(R.id.radioap);
@@ -136,6 +134,7 @@ public class patient_rdv extends AppCompatActivity {
             rb.setHint("22");
             timeap.addView(rb);
         }
+        lst.clear();
 
 
     }

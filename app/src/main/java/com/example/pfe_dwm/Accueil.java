@@ -1,7 +1,9 @@
  package com.example.pfe_dwm;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +22,14 @@ import com.google.android.material.navigation.NavigationView;
  public class Accueil extends AppCompatActivity {
      private DrawerLayout mDrawerLayout;
      //private NavigationView mDrawerLayout;
+     private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_accueil);
+
+
+
 
        //4 updating text view in another layout
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -34,7 +41,10 @@ import com.google.android.material.navigation.NavigationView;
 
 
 
+
+
     }
+
 
 
 
@@ -45,9 +55,21 @@ import com.google.android.material.navigation.NavigationView;
 //     }
 
      public  void Navigation(){
-         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+         //////////////////////Button pour ouvrir naviagtion ////////////////////
+         toolbar = findViewById(R.id.toolbar);
+         setSupportActionBar(toolbar);
 
          mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                 this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
+         mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+         actionBarDrawerToggle.syncState();
+         //navigationView.setNavigationItemSelectedListener(this);
+         //////////////////////////////////////////
+         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
          Menu menu = navigationView.getMenu();
 
          navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

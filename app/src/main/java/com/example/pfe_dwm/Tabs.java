@@ -3,6 +3,7 @@ package com.example.pfe_dwm;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -24,13 +25,15 @@ public class Tabs extends AppCompatActivity {
     private  FlightsFragment flightsFragment;
     private TravelFragment travelFragment;
     private notifFragment RDVlist;
-
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
 
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
 
