@@ -36,7 +36,7 @@ public class rdv_secretaire extends RecyclerView.Adapter<com.example.pfe_dwm.rdv
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         String d= String.valueOf(mData.get(position).getDate_rdv());
-        String dn= String.valueOf(mData.get(position).getDate_naiss());
+        String dn= String.valueOf(mData.get(position).getCin());
         String h= String.valueOf(mData.get(position).getTime());
         holder.nomPatient.setText(mData.get(position).getPatient_name());
         holder.rdvDate.setText(d);
@@ -67,7 +67,7 @@ public class rdv_secretaire extends RecyclerView.Adapter<com.example.pfe_dwm.rdv
 
             nomPatient = (TextView) itemView.findViewById(R.id.nom_patient) ;
             rdvDate = (TextView) itemView.findViewById(R.id.date_rdv);
-            dateNaiss = (TextView) itemView.findViewById(R.id.date_naiss);
+            dateNaiss = (TextView) itemView.findViewById(R.id.cin);
             rdvheure = (TextView) itemView.findViewById(R.id.rdv_heure);
 
 

@@ -74,9 +74,9 @@ public class login extends AppCompatActivity {
                                     Session.email = email; Session.dateCreation = date_creation;Session.id_role = id_role;
                                     if (id_role==3){  Intent i = new Intent(login.this, Accueil.class);
                                         startActivity(i);}
-                                    else if (id_role==2){  Intent i = new Intent(login.this, medecin.class);
+                                    else if (id_role==2){  Intent i = new Intent(login.this, secretaire.class);
                                         startActivity(i);}
-                                    else if(id_role==1) {  Intent i = new Intent(login.this, secretaire.class);
+                                    else if(id_role==1) {  Intent i = new Intent(login.this, medecin.class);
                                         startActivity(i);}
                                   }
                             } catch (JSONException e) {

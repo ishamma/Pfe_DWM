@@ -55,12 +55,15 @@ import org.json.JSONObject;
  */
 public class ExploreFragment extends Fragment {
     View myview;
-    public static final String LOGIN_URL="https://pfenz.000webhostapp.com/connect/login.php";
+
     List<dataSecretaire> lstTache;
-    LinearLayout l;
+
     RecyclerView myrv;
     rdv_secretaire myAdapter;
 
+    int idn=10;
+    String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
+            "and r.id_patient=p.id_patient and p.id_account=a.user_id and a.user_id='"+idn+"'";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,10 +86,7 @@ public class ExploreFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    DatePickerDialog datePickerDialog ;
 
-    int Year, Month, Day, Hour, Minute;
-    Calendar calendar ;
     public ExploreFragment() {
         // Required empty public constructor
     }
@@ -129,6 +129,10 @@ public class ExploreFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Log.v("haaa",query);
+
+                 sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
+                        "and r.id_patient=p.id_patient and p.id_account=a.user_id and  CIN='"+query+"' ";
+                stuff(sql);
                 return false;
             }
 
@@ -137,14 +141,12 @@ public class ExploreFragment extends Fragment {
                 return false;
             }
         });
-        stuff();
+        stuff(sql);
         return myview;
 
     }
-    public void stuff(){
-        int idn=10;
-        String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-                "and r.id_patient=p.id_patient and p.id_account=a.user_id and a.user_id='"+idn+"'";
+    public void stuff( String sql ){
+
 
         HashMap<String, String> params = new HashMap<>();
         params.put("sql", sql);
@@ -160,9 +162,9 @@ public class ExploreFragment extends Fragment {
                         String nomPatient = Tache.getString("nom_patient");
                         String date_rdv = Tache.getString("date_rdv");
                         String heure = Tache.getString("heure");
-                        String dateNaiss =Tache.getString("date_naiss");
+                        String cin =Tache.getString("CIN");
 
-                        lstTache.add(new dataSecretaire(nomPatient,date_rdv,heure,dateNaiss));
+                        lstTache.add(new dataSecretaire(nomPatient,date_rdv,heure,cin));
 
                     } catch (JSONException e) {
                         e.printStackTrace();

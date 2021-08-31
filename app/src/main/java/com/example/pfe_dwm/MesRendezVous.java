@@ -39,7 +39,16 @@ public class MesRendezVous extends AppCompatActivity {
 
         loadFragment(Rdv_list);
         Navigation();
-
+        //////////////////////Button pour ouvrir naviagtion ////////////////////
+        toolbar = findViewById(R.id.toolbarrdv);
+        setSupportActionBar(toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        //navigationView.setNavigationItemSelectedListener(this);
+        //////////////////////////////////////////
 
     }
     private void loadFragment(Fragment fragment) {
@@ -52,17 +61,6 @@ public class MesRendezVous extends AppCompatActivity {
     }
     public  void Navigation(){
 
-        //////////////////////Button pour ouvrir naviagtion ////////////////////
-        toolbar = findViewById(R.id.toolbarrdv);
-        setSupportActionBar(toolbar);
-
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
-                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
-        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        //navigationView.setNavigationItemSelectedListener(this);
-        //////////////////////////////////////////
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

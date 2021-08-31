@@ -6,13 +6,13 @@ public class dataSecretaire {
     public String patient_name;
     public String time;
     public String date_rdv;
-    public String date_naiss;
+    public String cin;
 
-    public dataSecretaire(String patient_name, String time, String date_rdv, String date_naiss) {
+    public dataSecretaire(String patient_name, String time, String date_rdv, String cin) {
         this.patient_name = patient_name;
         this.time = time;
         this.date_rdv = date_rdv;
-        this.date_naiss = date_naiss;
+        this.cin = cin;
     }
 
     public int getId_secretaire() {
@@ -47,11 +47,11 @@ public class dataSecretaire {
         this.date_rdv = date_rdv;
     }
 
-    public String getDate_naiss() {
-        return date_naiss;
+    public void setCin(String cin) {
+        this.cin = cin;
     }
 
-    public void setDate_naiss(String date_naiss) {
-        this.date_naiss = date_naiss;
+    public String getCin() {
+        return cin;
     }
 }

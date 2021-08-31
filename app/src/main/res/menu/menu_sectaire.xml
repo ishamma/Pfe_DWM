@@ -5,7 +5,9 @@
         android:id="@+id/acceuil_secretaire"
         android:title="Acceuil"/>
 
-    <item android:icon="@drawable/list"
+    <item
+        android:id="@+id/rdv"
+        android:icon="@drawable/list"
         android:title="Rendez-vous"/>
 
     <item

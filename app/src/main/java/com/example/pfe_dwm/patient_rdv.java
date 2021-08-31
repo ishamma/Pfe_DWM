@@ -52,17 +52,7 @@ public class patient_rdv extends AppCompatActivity {
         timeap = findViewById(R.id.radioap);
         calendrier.setMinDate(System.currentTimeMillis() - 1000);
 
-        //////////////////////Button pour ouvrir naviagtion ////////////////////
-        toolbar = findViewById(R.id.toolbarres);
-        setSupportActionBar(toolbar);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
-                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
-        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        //navigationView.setNavigationItemSelectedListener(this);
-        //////////////////////////////////////////
 
         calendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -120,7 +110,17 @@ public class patient_rdv extends AppCompatActivity {
 
             }
         });
-
+        Navigation();
+        //////////////////////Button pour ouvrir naviagtion ////////////////////
+        toolbar = findViewById(R.id.toolbarres);
+        setSupportActionBar(toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        //navigationView.setNavigationItemSelectedListener(this);
+        //////////////////////////////////////////
     }
 
     public  void fill(ArrayList<String> lst){

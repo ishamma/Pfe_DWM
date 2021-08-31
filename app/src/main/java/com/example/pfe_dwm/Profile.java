@@ -32,20 +32,20 @@ public class Profile extends AppCompatActivity {
         Navigation();
 
 
-
-    }
-
-    public  void Navigation(){
         //////////////////////Button pour ouvrir naviagtion ////////////////////
         toolbar = findViewById(R.id.toolbarpr);
         setSupportActionBar(toolbar);
-
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layoutpr);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.profile,R.string.profile);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
         mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         //navigationView.setNavigationItemSelectedListener(this);
         //////////////////////////////////////////
+    }
+
+    public  void Navigation(){
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
        // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
