@@ -24,7 +24,6 @@ public class Tabs extends AppCompatActivity {
     private ExploreFragment exploreFragment;
     private  FlightsFragment flightsFragment;
     private TravelFragment travelFragment;
-    private notifFragment RDVlist;
     private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

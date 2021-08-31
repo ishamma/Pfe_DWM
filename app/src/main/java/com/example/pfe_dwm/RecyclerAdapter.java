@@ -102,10 +102,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
             Supp = itemView.findViewById(R.id.imagedelete);
             edit = itemView.findViewById(R.id.imageEdit);
 
-
-
-
-
         }
     }
 

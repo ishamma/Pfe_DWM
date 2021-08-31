@@ -1,30 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ExploreFragment">
+
+    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
-
-        <!-- DatePicker Options -->
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/in_date"
-            android:layout_marginTop="82dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="7dp">
+         <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+             <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SELECT DATE"
-            android:id="@+id/btn_date"
-            android:layout_alignBottom="@+id/in_date"
-            android:layout_toRightOf="@+id/in_date"
-            android:layout_toEndOf="@+id/in_date" />
-
+            android:text="Liste des rendez vous"
+            android:textColor="@color/ihneBlue"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
     </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/cin"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Rechercher :"
+                android:padding="5dp"
+               />
+
+
+            <SearchView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:background="#ededed"
+                android:padding="5dp"
+                android:id="@+id/recherche"
+                />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+        <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rdv_sec"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        />
+    </LinearLayout>
+</LinearLayout>
 </androidx.core.widget.NestedScrollView>

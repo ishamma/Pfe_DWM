@@ -9,4 +9,9 @@
     <string name="intro">L’informatique cette science de travail rationnel de l’information est considérée comme le
 support des connaissances dans les domaines scientifiques, économiques et sociaux
 notamment à l’aide des machines automatique.</string>
+    <string-array name="array_name">
+        <item>Array Item One</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </string-array>
 </resources>
