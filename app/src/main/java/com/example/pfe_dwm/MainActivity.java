@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             { "Spitzer", "Nuclear", "NASA", "Alpha Centauri" } };
     String tst;
     ArrayList<String> rdv =  new ArrayList<>();
-    private static final String[][] header = { { "Header1", "Header2", "Header3", "Header4" } };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
        // TableView tableView = (TableView) findViewById(R.id.tableView);
         TableView<String[]> tableView = (TableView<String[]>) findViewById(R.id.tableView);
         tableView.setHeaderBackgroundColor(Color.WHITE);
-        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, "Header1","Header2","Header3","Header4"));
+        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, "Email", "Password", "Date creation", "User name"));
 
 //        tableView.setDataAdapter(new SimpleTableDataAdapter(this,  takin));
 //
