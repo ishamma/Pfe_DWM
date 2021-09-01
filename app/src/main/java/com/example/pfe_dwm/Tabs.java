@@ -58,8 +58,8 @@ public class Tabs extends AppCompatActivity {
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
         viewPagerAdapter.addFragment(exploreFragment, "RDV");
-        viewPagerAdapter.addFragment(flightsFragment, "Flights");
-        viewPagerAdapter.addFragment(travelFragment, "Travel");
+        viewPagerAdapter.addFragment(flightsFragment, "RDV a modifier");
+        viewPagerAdapter.addFragment(travelFragment, "RDV a annuler");
         viewPager.setAdapter(viewPagerAdapter);
 
 
@@ -132,7 +132,7 @@ public class Tabs extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),Tabs.class));
                         break;
                     }
-                    case R.id.log_out: {
+                    case R.id.logOutSec: {
                         Session.id=0;
                         startActivity(new Intent(getApplicationContext(),login.class));
                         break;

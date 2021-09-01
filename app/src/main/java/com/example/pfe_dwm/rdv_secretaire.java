@@ -39,9 +39,8 @@ public class rdv_secretaire extends RecyclerView.Adapter<com.example.pfe_dwm.rdv
         String dn= String.valueOf(mData.get(position).getCin());
         String h= String.valueOf(mData.get(position).getTime());
         holder.nomPatient.setText(mData.get(position).getPatient_name());
-        holder.rdvDate.setText(d);
+        holder.rdvDate.setText(h+" à "+d+":00");
         holder.dateNaiss.setText(dn);
-        holder.rdvheure.setText(h);
 
     }
 
@@ -60,7 +59,6 @@ public class rdv_secretaire extends RecyclerView.Adapter<com.example.pfe_dwm.rdv
         TextView nomPatient;
         TextView rdvDate;
         TextView dateNaiss;
-        TextView rdvheure;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -68,7 +66,6 @@ public class rdv_secretaire extends RecyclerView.Adapter<com.example.pfe_dwm.rdv
             nomPatient = (TextView) itemView.findViewById(R.id.nom_patient) ;
             rdvDate = (TextView) itemView.findViewById(R.id.date_rdv);
             dateNaiss = (TextView) itemView.findViewById(R.id.cin);
-            rdvheure = (TextView) itemView.findViewById(R.id.rdv_heure);
 
 
         }

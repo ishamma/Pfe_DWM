@@ -16,7 +16,8 @@
 
     <item
         android:icon="@drawable/ic_baseline_power_settings_new_24"
-        android:title="Log Out" />
+        android:title="Log Out"
+        android:id="@+id/logOutSec"/>
 
 
 </menu>

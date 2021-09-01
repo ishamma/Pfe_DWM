@@ -3,10 +3,22 @@ package com.example.pfe_dwm;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +26,15 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class TravelFragment extends Fragment {
+    View myview;
+
+    List<annulerData> lstTache;
+    RecyclerView myrv;
+    rdv_annulation_secretaire myAdapter;
+
+    int idn = 10;
+    String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
+            "and r.id_patient=p.id_patient and p.id_account=a.user_id and a.user_id='" + idn + "'";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +80,66 @@ public class TravelFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_travel, container, false);
+        myview = inflater.inflate(R.layout.fragment_travel, container, false);
+        SearchView search = myview.findViewById(R.id.recherche1);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.v("haaa", query);
+
+                sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
+                        "and r.id_patient=p.id_patient and p.id_account=a.user_id and  CIN='" + query + "' ";
+                stuff(sql);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        stuff(sql);
+        return myview;
+
     }
+
+    public void stuff(String sql) {
+
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("sql", sql);
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
+            @Override
+            public void processFinish(JSONArray output) {
+                lstTache = new ArrayList<>();
+                for (int i = 0; i < output.length(); i++) {
+                    Log.v("mmmm", output.toString());
+
+                    try {
+                        JSONObject Tache = output.getJSONObject(i);
+                        String nomPatient = Tache.getString("nom_patient");
+                        String date_rdv = Tache.getString("date_rdv");
+                        String heure = Tache.getString("heure");
+                        String cin = Tache.getString("CIN");
+
+                        lstTache.add(new annulerData(nomPatient, date_rdv, heure, cin));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+
+                myrv = (RecyclerView) myview.findViewById(R.id.rdv_annuler);
+                myAdapter = new rdv_annulation_secretaire(getContext(), lstTache);
+                myrv.setLayoutManager(new GridLayoutManager(getContext(), 1));
+                myrv.setAdapter(myAdapter);
+
+            }
+        });
+        request.execute();
+
+    }
+
 }

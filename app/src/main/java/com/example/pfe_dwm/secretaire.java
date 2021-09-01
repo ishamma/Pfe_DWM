@@ -65,7 +65,7 @@ public class secretaire extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),Tabs.class));
                         break;
                     }
-                    case R.id.log_out: {
+                    case R.id.logOutSec: {
                         Session.id=0;
                         startActivity(new Intent(getApplicationContext(),login.class));
                         break;
