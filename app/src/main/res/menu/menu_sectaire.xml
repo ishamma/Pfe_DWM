@@ -11,6 +11,7 @@
         android:title="Rendez-vous"/>
 
     <item
+        android:id="@+id/calendrier"
         android:icon="@drawable/calendrier"
         android:title="Calendrier" />
 

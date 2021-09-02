@@ -127,7 +127,10 @@ public class Tabs extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),secretaire.class));
                         break;
                     }
-
+                    case R.id.calendrier: {
+                        startActivity(new Intent(getApplicationContext(),create_calendar.class));
+                        break;
+                    }
                     case R.id.rdv: {
                         startActivity(new Intent(getApplicationContext(),Tabs.class));
                         break;

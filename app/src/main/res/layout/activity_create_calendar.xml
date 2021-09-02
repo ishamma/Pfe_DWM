@@ -22,72 +22,132 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="70dp">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="Créer votre calnedrier"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:textColor="@color/ihneBlue"
-            android:gravity="center"
-             />
-
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginTop="10dp"
-             />
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="130dp"
-                android:layout_height="150dp"
-                android:orientation="horizontal">
-
-                <RadioGroup
-                    android:id="@+id/radioap"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="130dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="30dp"
-                android:orientation="horizontal">
-
-                <RadioGroup
-                    android:id="@+id/radioC"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Insérer"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_round"
-            android:textSize="15dp"
-            android:textStyle="bold"/>
+            android:layout_marginTop="70dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="Créer votre calnedrier"
+                android:textColor="@color/ihneBlue"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="40dp"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/chk9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="09:00" />
+
+                        <CheckBox
+                            android:id="@+id/chk10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="10:00" />
+
+                        <CheckBox
+                            android:id="@+id/chk11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="11:00" />
+
+                        <CheckBox
+                            android:id="@+id/chk12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="12:00" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/chk14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="14:00" />
+
+                        <CheckBox
+                            android:id="@+id/chk15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="15:00" />
+
+                        <CheckBox
+                            android:id="@+id/chk16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="16:00" />
+
+                        <CheckBox
+                            android:id="@+id/chk17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="17:00" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnins"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_round"
+                android:text="Insérer"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
