@@ -147,15 +147,14 @@ public class create_calendar extends AppCompatActivity {
                                                         JSONObject cal = output.getJSONObject(0);
                                                         idsec = cal.getInt("id_secretaire");
 
-                                                        // HNA FIN KAYN MOXKIL
-                                                        // LES CRENEAUX KAYT INSERAW 2 FOIS
+
                                                         Log.i("TEST id sec",String.valueOf(idsec));
                                                         for (int i = 0 ;i <heure.size();i++){
                                                             Log.i("id cal : ",String.valueOf(id));
                                                             Log.i("id sec : ",String.valueOf(idsec));
                                                             Log.i("heure : ",heure.get(i));
 
-                                                            String sqlc = "INSERT INTO `creneaux`(`heure`, `active`, `id_calendrier`, `id_secretaire`) VALUES ('"+heure.get(i)+"','"+1+"','"+6+"','"+1+"')";
+                                                            String sqlc = "INSERT INTO `creneaux`(`heure`, `active`, `id_calendrier`, `id_secretaire`) VALUES ('"+heure.get(i)+"','"+1+"','"+id+"','"+idsec+"')";
                                                             HashMap<String, String> paramc = new HashMap<>();
                                                             paramc.put("sql",sqlc);
 
