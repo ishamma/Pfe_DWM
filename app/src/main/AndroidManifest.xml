@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PFE_DWM"
         android:usesCleartextTraffic="true">
-        <activity android:name=".create_calendar"></activity>
+        <activity android:name=".medcin_calendar"></activity>
+        <activity android:name=".rdv_medcin" />
+        <activity android:name=".create_calendar" />
         <activity android:name=".rdv_annulation_secretaire" />
         <activity android:name=".rdv_modification_secretaire" />
         <activity android:name=".rdv_secretaire" />

@@ -64,7 +64,7 @@ tools:context=".medecin">
                 >
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/pie"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/pie_chart"
@@ -76,7 +76,7 @@ tools:context=".medecin">
                 android:orientation="vertical"
                 android:background="@drawable/bg_round">
                 <ImageButton
-                    android:id="@+id/img2"
+                    android:id="@+id/callendar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/calender"
@@ -99,7 +99,7 @@ tools:context=".medecin">
                 android:background="@drawable/bg_round"
                 android:layout_marginRight="25dp">
                 <ImageButton
-                    android:id="@+id/img3"
+                    android:id="@+id/rdvlst"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/rdv_list"
@@ -112,7 +112,7 @@ tools:context=".medecin">
                 android:orientation="vertical"
                 android:background="@drawable/bg_round">
                 <ImageButton
-                    android:id="@+id/img4"
+                    android:id="@+id/secr"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/add_sec"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,17 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+
+import de.codecrafters.tableview.TableView;
+import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
+import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -113,6 +124,72 @@ public class pieFragment extends Fragment {
 
 
 
+        String sql = "SELECT  * FROM `account` ";
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("sql", sql);
+
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
+            @Override
+            public void processFinish(JSONArray output){
+//
+//                try {
+//                     takin = new String[output.length()][3];
+//                    for (int i = 0; i < output.length(); i++) {
+//                        JSONObject allClass = output.getJSONObject(i);
+//                        takin[i] = new String[]{allClass.getString("email"),
+//                                allClass.getString("password")};
+//                }
+//
+//
+//                }
+//                catch (JSONException e) {
+//                     e.printStackTrace();
+//                     }
+            }
+        });
+        request.execute();
+
+
+
+
+
+
+
+        // TableView tableView = (TableView) findViewById(R.id.tableView);
+        TableView<String[]> tableView = (TableView<String[]>) view.findViewById(R.id.tbl);
+        tableView.setColumnCount(4);
+        tableView.setHeaderBackgroundColor(Color.WHITE);
+        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this.getActivity(), "Email", "Password", "Date creation", "User name"));
+
+//        tableView.setDataAdapter(new SimpleTableDataAdapter(this,  takin));
+//
+//        Toast.makeText(this,tst,Toast.LENGTH_LONG);
+
+
+
+
+
+        try {
+
+            String[][] takin = new String[PerformNetworkRequest.jsonarray.length()][4];
+            for (int i = 0; i < PerformNetworkRequest.jsonarray.length(); i++) {
+                JSONObject allClass = PerformNetworkRequest.jsonarray.getJSONObject(i);
+                takin[i] = new String[]{allClass.getString("email"),
+                        allClass.getString("password"),
+                        allClass.getString("date_creation"),
+                        allClass.getString("user_name")
+
+                };
+
+            }
+            String liste = Collections.singletonList(takin).toString();
+            Log.i("Takin list" , "liste");
+            tableView.setDataAdapter(new SimpleTableDataAdapter(this.getActivity(), takin));
+
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
 

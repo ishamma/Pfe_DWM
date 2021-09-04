@@ -20,19 +20,6 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <de.codecrafters.tableview.TableView
 
-        android:id="@+id/tableView"
-        android:layout_width="320dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment"
-        app:tableView_columnCount="4">
-
-    </de.codecrafters.tableview.TableView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

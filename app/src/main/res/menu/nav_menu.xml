@@ -5,17 +5,29 @@
         android:id="@+id/acceuil_medcin"
         android:title="Acceuil"/>
 
+    <item android:icon="@drawable/dashboard"
+        android:id="@+id/dashboard"
+        android:title="Dashboard"/>
+
     <item android:icon="@drawable/list"
+        android:id="@+id/rdvlist"
     android:title="Rendez-vous"/>
 
     <item
     android:icon="@drawable/calendrier"
+        android:id="@+id/calmed"
     android:title="Calendrier" />
+
     <item android:icon="@drawable/secretaire_gestion"
+        android:id="@+id/gstsec"
         android:title="Gestion secrétaire" />
+
     <item android:icon="@drawable/edit"
+        android:id="@+id/profile"
     android:title="Gestion profile" />
+
     <item
+        android:id="@+id/log_out"
     android:icon="@drawable/ic_baseline_power_settings_new_24"
     android:title="Log Out" />
 

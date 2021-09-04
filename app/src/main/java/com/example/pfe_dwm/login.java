@@ -111,7 +111,7 @@ public class login extends AppCompatActivity {
         nav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),create_calendar.class));
+                startActivity(new Intent(getApplicationContext(),medcin_calendar.class));
             }
         });
     }
