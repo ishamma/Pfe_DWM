@@ -32,6 +32,7 @@ public class Tabs extends AppCompatActivity {
     private  FlightsFragment flightsFragment;
     private TravelFragment travelFragment;
     private Toolbar toolbar;
+
     DrawerLayout mDrawerLayout ;
 
     @Override

@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,11 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.RecyclerAdapter.MyViewHolder> {
@@ -40,25 +44,27 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        String n= String.valueOf(mData.get(position).getId_creneaux());
+        String n= String.valueOf(mData.get(position).getId_creneaux())+":00";
         holder.tv_book_title.setText(mData.get(position).getDate());
         holder.tv_book_title_2.setText(n);
         holder.Supp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*String sql = "DELETE FROM `Tache` WHERE `Nom`='"+ holder.tv_book_title.getText()+"' and `Id_Femme`='"+Session.id+"'";
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                String currentDateandTime = sdf.format(new Date());
+              String sql = "INSERT INTO `notification`(`message`,`id_rdv`) VALUES ('Votre demande est en traitement',1)";
                 HashMap<String, String> params = new HashMap<>();
                 params.put("sql",sql);
+                Log.i("hhhhhh",sql);
 
                 PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
                     @Override
                     public void processFinish(JSONArray output) {
-                        Toast.makeText(mContext.getApplicationContext(), "suppr", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext.getApplicationContext(), "Votre demande est en traitement", Toast.LENGTH_SHORT).show();
                         remove(position);
                     }
                 });
-                request.execute();*/
-                Toast.makeText(mContext.getApplicationContext(), "suppr", Toast.LENGTH_SHORT).show();
+                request.execute();
             }
 
         });

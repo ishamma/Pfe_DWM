@@ -42,33 +42,6 @@ public class medecin extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public  void Navigation(){
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);

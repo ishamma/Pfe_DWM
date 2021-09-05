@@ -30,7 +30,14 @@ import com.google.android.material.navigation.NavigationView;
         if(Session.id==0){
               startActivity(new Intent(this,login.class));
         }
-
+        Button btn = findViewById(R.id.rserve_acceuil);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),patient_rdv.class);
+                startActivity(intent);
+            }
+        });
 
 
 

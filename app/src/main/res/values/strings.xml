@@ -10,9 +10,12 @@
 support des connaissances dans les domaines scientifiques, économiques et sociaux
 notamment à l’aide des machines automatique.</string>
     <string-array name="array_name">
-        <item>Array Item One</item>
-        <item>Array Item Two</item>
-        <item>Array Item Three</item>
+        <item>---------------</item>
+        <item>Par Année</item>
+        <item>Par Mois</item>
+        <item>Par Jours</item>
+        <item>Par Patient</item>
+
     </string-array>
     <string name="title_activity_medcin_calender">medcin_calender</string>
     <!-- Strings used for fragments for navigation -->
