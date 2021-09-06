@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -34,7 +35,10 @@ public class patient_rdv extends AppCompatActivity {
     private TextView date;
     private CalendarView calendrier;
     private RadioGroup time,timeap;
-    String Ndate;
+    private Button reserve;
+    private  String index;
+    private int idpp,idc;
+    String Ndate, Ndatei;
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
     @Override
@@ -51,6 +55,82 @@ public class patient_rdv extends AppCompatActivity {
         time = findViewById(R.id.radioC);
         timeap = findViewById(R.id.radioap);
         calendrier.setMinDate(System.currentTimeMillis() - 1000);
+        reserve =findViewById(R.id.reserver);
+        reserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 int idp = Session.id;
+                String sql ="select id_patient from account, patient where patient.id_account=account.user_id and user_id='"+idp+"'";
+                /// params for sql requete
+                HashMap<String, String> params = new HashMap<>();
+                params.put("sql",sql);
+                PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
+
+                    @Override
+                    public void processFinish(JSONArray output) {
+                        if(output!=null){
+                            try {
+
+
+                                JSONObject account = output.getJSONObject(0);
+
+                                idpp = account.getInt("id_patient");
+
+
+                                Log.i("id account",String.valueOf(idpp));
+
+                                } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        String sql2 = "select id_creneaux from creneaux where heure='"+index+"'" ;
+                        /// params for sql requete
+                        HashMap<String, String> params2 = new HashMap<>();
+                        params2.put("sql",sql2);
+                        PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
+                            @Override
+                            public void processFinish(JSONArray output) throws JSONException {
+
+                                if(output!=null){
+                                    try {
+                                        JSONObject account = output.getJSONObject(0);
+
+                                        idc = account.getInt("id_creneaux");
+
+
+                                        Log.i("id creneaux",String.valueOf(idc));
+
+                                         String sql3 ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Reserver')" ;
+                                         /// params for sql requete
+                                        HashMap<String, String> params3 = new HashMap<>();
+                                        params3.put("sql",sql3);
+                                        Log.i("ash kn inserer:",sql3);
+
+                                      PerformNetworkRequest request3 = new PerformNetworkRequest(Api.query, params3, new PerformNetworkRequest.AsyncResponse() {
+
+                                            @Override
+                                            public void processFinish(JSONArray output) {
+                                                Intent i = new Intent(patient_rdv.this,Accueil.class);
+                                                startActivity(i);
+                                            }
+                                        });
+                                        request3.execute();
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                          }
+                        });
+                        request2.execute();
+
+                    }
+                });
+                request.execute();
+
+            }
+        });
 
 
 
@@ -66,7 +146,8 @@ public class patient_rdv extends AppCompatActivity {
 
 
                 ArrayList<String>  ih = new ArrayList<>();
-                 Ndate = String.valueOf(dayOfMonth)+"/"+String.valueOf(month)+"/"+String.valueOf(year);
+                 Ndate = String.valueOf(dayOfMonth)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year);
+                 Ndatei= String.valueOf(year)+"-"+String.valueOf(month+1)+"-"+String.valueOf(dayOfMonth);
                 date.setText(Ndate);
 
                 String sql = "SELECT  * FROM `creneaux` ";
@@ -102,12 +183,11 @@ public class patient_rdv extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = group.findViewById(checkedId);
-                String index = radioButton.getText().toString();
+               index = radioButton.getText().toString();
                 Toast toast=Toast.makeText(getApplicationContext(),index,Toast.LENGTH_SHORT);
                 toast.setMargin(50,50);
                 toast.show();
                 date.setText(Ndate+" "+index+""+":00");
-
             }
         });
         Navigation();
@@ -131,7 +211,7 @@ public class patient_rdv extends AppCompatActivity {
         timeap.removeAllViews();
         for ( int i = 0 ; i < 4 ; i++ ) {
             RadioButton rb = new RadioButton(getApplicationContext());
-            rb.setText(lst.get(i)+":00");
+            rb.setText(lst.get(i));
             rb.setHint("22");
             time.addView(rb);
         }

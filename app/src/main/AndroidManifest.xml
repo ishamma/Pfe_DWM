@@ -26,7 +26,6 @@
         <activity android:name=".MesRendezVous" />
         <activity android:name=".Tabs" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".rdv_par_patient" />
         <activity android:name=".pieChart" />
         <activity android:name=".secretaire" />
         <activity android:name=".medecin" />

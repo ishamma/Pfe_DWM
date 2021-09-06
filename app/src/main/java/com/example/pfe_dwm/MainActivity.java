@@ -77,21 +77,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         /////Pie Code //////////////////////
-
+/*
         PieChart piechart = findViewById(R.id.barChart);
         ArrayList<PieEntry> rdv = new ArrayList<>();
-        /* int[] color = {
-                Color.rgb(137, 207, 240), Color.rgb(244, 194, 194),
-                 Color.rgb(209, 243, 197)
-
-        };*/        /*ArrayList<String> months = new ArrayList<>();
-        months.add("Janvier"); months.add("Février");
-        months.add("Mars"); months.add("Avril");
-        months.add("Mai"); months.add("Juin");
-        months.add("Juillet"); months.add("Aout");
-        months.add("Septembre"); months.add("Octobre");
-        months.add("Novembre"); months.add("Décembre");*/
-
         rdv.add(new PieEntry(70,"Réserver"));
         rdv.add(new PieEntry(10,"Annuler"));
         rdv.add(new PieEntry(20,"Disponible"));
@@ -104,9 +92,6 @@ public class MainActivity extends AppCompatActivity {
         piechart.setEntryLabelColor(Color.WHITE);
         piechart.setEntryLabelTextSize(8f);
 
-
-
-
         PieData pieData = new PieData(pieDataSet);
 
         piechart.setData(pieData);
@@ -115,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         //piechart.animate();
         // XAxis xAxis  = piechart.getXAxis();
         //  xAxis.setValueFormatter(new IndexAxisValueFormatter(months));
-
+*/
 
         ////////////////////////////////////////////////////////
 
@@ -170,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                        String sql6 = "SELECT CONCAT(p.nom_patient,' ',p.prenom_patient)as nom,p.CIN,r.date_rdv,c.heure FROM `rendez_vous` r,`patient` p, `creneaux` c where r.id_patient=p.id_patient AND r.id_creneaux = c.id_creneaux ";
+                        String sql6 = "SELECT etat, COUNT(*) AS reserver, COUNT(IF(etat='Annuler',1,null)) AS annuler, COUNT(IF(etat='Disponible',1,null)) AS dispo FROM rendez_vous";
                         HashMap<String, String> params6 = new HashMap<String, String>();
                         params5.put("sql", sql6);
 
@@ -179,54 +164,27 @@ public class MainActivity extends AppCompatActivity {
                             public void processFinish(JSONArray output){
                                 Log.i("pppp",output.toString());
 
-
-
                                 try {
 
-
+                                    String[][] takin = new String[PerformNetworkRequest.jsonarray.length()][3];
                                     for (int i = 0; i < PerformNetworkRequest.jsonarray.length(); i++) {
                                         JSONObject allClass = PerformNetworkRequest.jsonarray.getJSONObject(i);
-                                        /////Pie Code //////////////////////
+                                        takin[i] = new String[]{allClass.getString("reserver"),
+                                                allClass.getString("annuler"),
+                                                allClass.getString("dispo")
 
-                                        PieChart piechart = findViewById(R.id.barChart);
-                                        ArrayList<PieEntry> rdv = new ArrayList<>();
-
-
-                                        rdv.add(new PieEntry(70,"Réserver"));
-                                        rdv.add(new PieEntry(10,"Annuler"));
-                                        rdv.add(new PieEntry(20,"Disponible"));
-
-
-                                        PieDataSet pieDataSet =new PieDataSet(rdv,"");
-                                        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-                                        pieDataSet.setValueTextColor(Color.WHITE);
-                                        pieDataSet.setValueTextSize(8f);
-                                        piechart.setEntryLabelColor(Color.WHITE);
-                                        piechart.setEntryLabelTextSize(8f);
-
-
-
-
-                                        PieData pieData = new PieData(pieDataSet);
-
-                                        piechart.setData(pieData);
-                                        piechart.getDescription().setEnabled(false);
-                                        piechart.setCenterText("Etat de Rendez-vous");
-
-
+                                        };
 
                                     }
-
-
+                                    String liste = Collections.singletonList(takin).toString();
+                                    Log.i("Takin list" , "liste");
                                 }
                                 catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
                         });
-                        request6.execute();
-
-
+                        request5.execute();
 
                         break;
                     case 1:

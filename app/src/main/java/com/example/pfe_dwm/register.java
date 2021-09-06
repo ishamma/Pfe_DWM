@@ -34,9 +34,6 @@ TextView nom ,prenom,cin,tele,cnss,adresse,date,email,password;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-//        getSupportActionBar().setSubtitle("أنشا حساب جديد");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         nom=findViewById(R.id.nom);
         prenom=findViewById(R.id.prenom);
         cin=findViewById(R.id.cin);
