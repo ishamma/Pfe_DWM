@@ -7,6 +7,10 @@
     android:background="@drawable/log"
     tools:context=".login">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="138dp"

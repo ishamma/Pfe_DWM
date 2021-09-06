@@ -1,8 +1,11 @@
 package com.example.pfe_dwm;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaCodecInfo;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +29,7 @@ import java.util.Map;
 public class login extends AppCompatActivity {
     TextView username,password,register;
     String result;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //getActionBar().setSubtitle("Login");
@@ -32,6 +37,19 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Button btn1= findViewById(R.id.btn_log);
         register = findViewById(R.id.textView6);
+
+
+
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(toolbar);
+       // toolbar.setSubtitle("Login");
+
+        TextView cart = findViewById(R.id.cart_badge);
+        cart.setText("5");
+
+
+
 
           username = findViewById(R.id.txtemail);
           password = findViewById(R.id.txtpassword);
@@ -111,7 +129,17 @@ public class login extends AppCompatActivity {
         nav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),medcin_calendar.class));
+                AlertDialog.Builder builder = new AlertDialog.Builder(login.this);
+                builder.setMessage("HADA Ndiru fih les erreur ola safi ra t insera bye hh")
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                startActivity(new Intent(getApplicationContext(),register.class));
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+
             }
         });
     }
