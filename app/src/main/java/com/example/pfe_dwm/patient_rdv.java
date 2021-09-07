@@ -100,8 +100,17 @@ public class patient_rdv extends AppCompatActivity {
 
 
                                         Log.i("id creneaux",String.valueOf(idc));
+                                        String sql3;
+                                        if ( getIntent().getBooleanExtra("Mod",false)){
+                                            Log.i("Modifier : " ,"True");
+                                             sql3 ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Reserver')" ;
+                                        }
+                                        else {
+                                            Log.i("Modifier : " ,"false");
 
-                                         String sql3 ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Reserver')" ;
+                                            sql3  ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Reserver')" ;
+                                        }
+
                                          /// params for sql requete
                                         HashMap<String, String> params3 = new HashMap<>();
                                         params3.put("sql",sql3);
@@ -182,6 +191,7 @@ public class patient_rdv extends AppCompatActivity {
         time.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                timeap.clearCheck();
                 RadioButton radioButton = group.findViewById(checkedId);
                index = radioButton.getText().toString();
                 Toast toast=Toast.makeText(getApplicationContext(),index,Toast.LENGTH_SHORT);
@@ -190,6 +200,14 @@ public class patient_rdv extends AppCompatActivity {
                 date.setText(Ndate+" "+index+""+":00");
             }
         });
+
+        timeap.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                time.clearCheck();
+            }
+        });
+
         Navigation();
         //////////////////////Button pour ouvrir naviagtion ////////////////////
         toolbar = findViewById(R.id.toolbarres);

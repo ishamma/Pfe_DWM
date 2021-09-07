@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="4dp"
+
         android:background="#45628d">
 
 
@@ -36,8 +37,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="103dp"
-            android:layout_marginLeft="103dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="120dp"
             android:layout_marginTop="24dp"
             android:text="Tache2"
             android:textColor="#fff"

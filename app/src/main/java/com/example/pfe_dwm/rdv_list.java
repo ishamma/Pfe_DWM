@@ -28,6 +28,7 @@ public class rdv_list extends Fragment {
     View myview;
     public static final String LOGIN_URL="https://pfenz.000webhostapp.com/connect/login.php";
     List<Tache> lstTache;
+    List<notif_list> notif;
     LinearLayout l;
     RecyclerView myrv;
     RecyclerAdapter myAdapter;
@@ -85,7 +86,7 @@ public class rdv_list extends Fragment {
     public void stuff(){
         int idn=Session.id;
         String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-                "and r.id_patient=p.id_patient and p.id_account=a.user_id and a.user_id='"+idn+"'";
+                "and r.id_patient=p.id_patient and p.id_account=a.user_id and r.etat='Reserver' and a.user_id='"+idn+"'";
         HashMap<String, String> params = new HashMap<>();
         params.put("sql", sql);
         PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
@@ -96,8 +97,12 @@ public class rdv_list extends Fragment {
                     try {
                         JSONObject Tache = output.getJSONObject(i);
                         String tache = Tache.getString("date_rdv");
-                        int id_creneaux = Tache.getInt("heure");
-                        lstTache.add(new Tache(tache,id_creneaux));
+                        String id_creneaux = Tache.getString("heure");
+                        int id_rdv = Tache.getInt("id_rdv");
+
+                        String nom = Tache.getString("nom_patient")+" "+Tache.getString("prenom_patient");
+                        String cin = Tache.getString("CIN");
+                        lstTache.add(new Tache(tache,id_creneaux,id_rdv,nom,cin));
                     /*TextView t = new TextView(AffichagePrin.this);
                     t.setText(tache);
 
