@@ -55,7 +55,7 @@
             android:layout_marginRight="10dp"
             android:src="@drawable/delete_rdv" />
 
-        <ImageView
+        w<ImageView
             android:id="@+id/imageEdit"
             android:layout_width="30dp"
             android:layout_height="30dp"
