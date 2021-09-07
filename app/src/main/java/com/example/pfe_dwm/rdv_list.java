@@ -84,8 +84,7 @@ public class rdv_list extends Fragment {
 
     public void stuff(){
         int idn=Session.id;
-        String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-                "and r.id_patient=p.id_patient and p.id_account=a.user_id and a.user_id='"+idn+"'";
+        String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux and r.id_patient=p.id_patient and p.id_account=a.user_id and r.etat='Reserver' and a.user_id='"+idn+"'";
         HashMap<String, String> params = new HashMap<>();
         params.put("sql", sql);
         PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
@@ -96,8 +95,8 @@ public class rdv_list extends Fragment {
                     try {
                         JSONObject Tache = output.getJSONObject(i);
                         String tache = Tache.getString("date_rdv");
-                        int id_creneaux = Tache.getInt("heure");
-                        lstTache.add(new Tache(tache,id_creneaux));
+                        String heure = Tache.getString("heure");
+                        lstTache.add(new Tache(tache,heure));
                     /*TextView t = new TextView(AffichagePrin.this);
                     t.setText(tache);
 

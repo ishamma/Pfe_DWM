@@ -7,9 +7,9 @@ public class Tache {
     public String email;
     public  int id_user;
     public String date;
-    public int id_creneaux;
+    public String id_creneaux;
 
-    public Tache(String date,int id_creneaux) {
+    public Tache(String date,String id_creneaux) {
         this.date = date;
         this.id_creneaux= id_creneaux;
     }
@@ -22,7 +22,7 @@ public class Tache {
         this.date = date;
     }
 
-    public void setId_creneaux(int id_creneaux) {
+    public void setId_creneaux(String id_creneaux) {
         this.id_creneaux = id_creneaux;
     }
 
@@ -40,7 +40,7 @@ public class Tache {
     public String getDate(){
         return date;
     }
-    public int getId_creneaux(){
+    public String getId_creneaux(){
         return id_creneaux;
     }
 
