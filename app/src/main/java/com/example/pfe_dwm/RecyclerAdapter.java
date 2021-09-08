@@ -96,16 +96,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
 
 
 
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(mContext.getApplicationContext());
-//                        builder.setMessage("Votre demande est en cours de traitement"+String.valueOf(position))
-//                                .setCancelable(false)
-//                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                                    public void onClick(DialogInterface dialog, int id) {
-//                                        mContext.startActivity(new Intent(mContext.getApplicationContext(),rdv_list.class));
-//                                    }
-//                                });
-//                        AlertDialog alert = builder.create();
-//                        alert.show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                        builder.setMessage("Votre demande est en cours de traitement"+String.valueOf(position))
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //mContext.startActivity(new Intent(mContext.getApplicationContext(),rdv_list.class));
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        alert.show();
 
 
                     }

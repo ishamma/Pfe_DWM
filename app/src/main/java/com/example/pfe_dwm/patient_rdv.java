@@ -2,11 +2,13 @@ package com.example.pfe_dwm;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -103,7 +105,7 @@ public class patient_rdv extends AppCompatActivity {
                                         String sql3;
                                         if ( getIntent().getBooleanExtra("Mod",false)){
                                             Log.i("Modifier : " ,"True");
-                                             sql3 ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Reserver')" ;
+                                             sql3 ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Pre-Valider')" ;
                                         }
                                         else {
                                             Log.i("Modifier : " ,"false");
@@ -120,8 +122,21 @@ public class patient_rdv extends AppCompatActivity {
 
                                             @Override
                                             public void processFinish(JSONArray output) {
-                                                Intent i = new Intent(patient_rdv.this,Accueil.class);
-                                                startActivity(i);
+
+
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(patient_rdv.this);
+                                                builder.setMessage("Votre demande est en cours de traitement")
+                                                        .setCancelable(false)
+                                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int id) {
+                                                                Intent i = new Intent(patient_rdv.this,Accueil.class);
+                                                                startActivity(i);
+                                                            }
+                                                        });
+                                                AlertDialog alert = builder.create();
+                                                alert.show();
+
+
                                             }
                                         });
                                         request3.execute();
@@ -159,7 +174,8 @@ public class patient_rdv extends AppCompatActivity {
                  Ndatei= String.valueOf(year)+"-"+String.valueOf(month+1)+"-"+String.valueOf(dayOfMonth);
                 date.setText(Ndate);
 
-                String sql = "SELECT  * FROM `creneaux` ";
+                //String sql = "SELECT  * FROM creneaux,calendrier  where  calendrier.id_calendrier=creneaux.id_calendrier and calendrier.date_calendrier='"+Ndate+"'";
+                String sql ="Select * from creneaux";
                 HashMap<String, String> params = new HashMap<String, String>();
                 params.put("sql", sql);
 
@@ -173,6 +189,7 @@ public class patient_rdv extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         }
+
 
                         fill(ih);
                         ih.clear();
@@ -191,20 +208,42 @@ public class patient_rdv extends AppCompatActivity {
         time.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                timeap.clearCheck();
+
+//                    timeap.setOnCheckedChangeListener(null);
+//                    timeap.clearCheck();
+//                    timeap.setOnCheckedChangeListener();
+                for (int i = 0; i < timeap.getChildCount(); i++) {
+                    RadioButton radioButton = (RadioButton) timeap.getChildAt(i);
+                    radioButton.setChecked(false);
+                }
+
                 RadioButton radioButton = group.findViewById(checkedId);
                index = radioButton.getText().toString();
                 Toast toast=Toast.makeText(getApplicationContext(),index,Toast.LENGTH_SHORT);
                 toast.setMargin(50,50);
                 toast.show();
-                date.setText(Ndate+" "+index+""+":00");
+                date.setText(Ndate+" "+index+"");
             }
         });
 
         timeap.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                time.clearCheck();
+
+
+//                    time.setOnCheckedChangeListener(null);
+//                    time.clearCheck();
+//                    time.setOnCheckedChangeListener();
+                for (int i = 0; i < time.getChildCount(); i++) {
+                    RadioButton radioButton = (RadioButton) time.getChildAt(i);
+                    radioButton.setChecked(false);
+                }
+                RadioButton radioButton = group.findViewById(checkedId);
+                index = radioButton.getText().toString();
+                Toast toast=Toast.makeText(getApplicationContext(),index,Toast.LENGTH_SHORT);
+                toast.setMargin(50,50);
+                toast.show();
+                date.setText(Ndate+" "+index+"");
             }
         });
 
@@ -223,6 +262,7 @@ public class patient_rdv extends AppCompatActivity {
 
     public  void fill(ArrayList<String> lst){
 
+        if (lst.size() > 0){
         time = findViewById(R.id.radioC);
         timeap = findViewById(R.id.radioap);
         time.removeAllViews();
@@ -233,6 +273,8 @@ public class patient_rdv extends AppCompatActivity {
             rb.setHint("22");
             time.addView(rb);
         }
+
+
         for ( int i = 4 ; i <lst.size()-1 ; i++ ) {
             RadioButton rb = new RadioButton(getApplicationContext());
             rb.setText(lst.get(i));
@@ -241,7 +283,7 @@ public class patient_rdv extends AppCompatActivity {
         }
         lst.clear();
 
-
+        }
     }
 
     public  void Navigation(){
