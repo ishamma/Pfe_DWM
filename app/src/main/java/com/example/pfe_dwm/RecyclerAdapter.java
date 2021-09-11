@@ -118,8 +118,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 String sql = "Update rendez_vous set etat='Modifier' where id_rdv = '"+mData.get(position).getId()+"'";
                 HashMap<String, String> params = new HashMap<>();
                 params.put("sql",sql);

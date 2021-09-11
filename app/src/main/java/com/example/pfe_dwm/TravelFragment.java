@@ -118,12 +118,13 @@ public class TravelFragment extends Fragment {
 
                     try {
                         JSONObject Tache = output.getJSONObject(i);
-                        String nomPatient = Tache.getString("nom_patient");
+                        String nomPatient = Tache.getString("nom_patient")+" "+ Tache.getString("prenom_patient");
                         String date_rdv = Tache.getString("date_rdv");
                         String heure = Tache.getString("heure");
                         String cin = Tache.getString("CIN");
+                        int id=Tache.getInt("id_rdv");
 
-                        lstTache.add(new annulerData(nomPatient, date_rdv, heure, cin));
+                        lstTache.add(new annulerData(nomPatient,id,date_rdv, heure, cin));
 
                     } catch (JSONException e) {
                         e.printStackTrace();

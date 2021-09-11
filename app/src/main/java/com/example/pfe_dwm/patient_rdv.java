@@ -258,9 +258,11 @@ public class patient_rdv extends AppCompatActivity {
                  Ndate = String.valueOf(dayOfMonth)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year);
                  Ndatei= String.valueOf(year)+"-"+String.valueOf(month+1)+"-"+String.valueOf(dayOfMonth);
                 date.setText(Ndate);
+                 Log.i("eee",Ndatei);
+               String sql = "SELECT  * FROM creneaux,calendrier  where  calendrier.id_calendrier=creneaux.id_calendrier and calendrier.date_calendrier='"+Ndatei+"'";
+                Log.i("requet",sql);
 
-                //String sql = "SELECT  * FROM creneaux,calendrier  where  calendrier.id_calendrier=creneaux.id_calendrier and calendrier.date_calendrier='"+Ndate+"'";
-                String sql ="Select * from creneaux";
+                // String sql ="Select * from creneaux";
                 HashMap<String, String> params = new HashMap<String, String>();
                 params.put("sql", sql);
 

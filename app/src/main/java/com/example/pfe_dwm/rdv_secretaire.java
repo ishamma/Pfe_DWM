@@ -39,7 +39,7 @@ public class rdv_secretaire extends RecyclerView.Adapter<com.example.pfe_dwm.rdv
         String dn= String.valueOf(mData.get(position).getCin());
         String h= String.valueOf(mData.get(position).getTime());
         holder.nomPatient.setText(mData.get(position).getPatient_name());
-        holder.rdvDate.setText(h+" à "+d+":00");
+        holder.rdvDate.setText(h+" à "+d);
         holder.dateNaiss.setText(dn);
 
     }

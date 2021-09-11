@@ -1,25 +1,26 @@
 package com.example.pfe_dwm;
 
 public class annulerData {
-    public  int id_secretaire;
+    public  int id;
     public String patient_name;
     public String time;
     public String date_rdv;
     public String cin;
 
-    public annulerData(String patient_name, String time, String date_rdv, String cin) {
+    public annulerData(String patient_name,int id, String time, String date_rdv, String cin) {
         this.patient_name = patient_name;
         this.time = time;
         this.date_rdv = date_rdv;
         this.cin = cin;
+        this.id=id;
     }
 
-    public int getId_secretaire() {
-        return id_secretaire;
+    public int getId() {
+        return id;
     }
 
-    public void setId_secretaire(int id_secretaire) {
-        this.id_secretaire = id_secretaire;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPatient_name() {

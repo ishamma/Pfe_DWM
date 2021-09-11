@@ -70,7 +70,7 @@ public class medcin_calendar extends AppCompatActivity {
                 Log.i("Date",date.toString());
 
                 String sql ="\n" +
-                        "SELECT c.* from `creneaux` c , `rendez_vous` r , `calendrier` cl where r.id_creneaux = c.id_creneaux and c.id_calendrier = cl.id_calendrier and cl.date_calendrier='"+date+"' ";
+                        "SELECT DISTINCT c.* from `creneaux` c , `rendez_vous` r , `calendrier` cl where r.id_creneaux = c.id_creneaux and c.id_calendrier = cl.id_calendrier and cl.date_calendrier='"+date+"' ";
                 HashMap<String, String> params = new HashMap<>();
                 params.put("sql", sql);
 

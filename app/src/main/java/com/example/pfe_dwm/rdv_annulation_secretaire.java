@@ -1,12 +1,15 @@
 package com.example.pfe_dwm;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
 
 public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.pfe_dwm.rdv_annulation_secretaire.MyViewHolder>  {
@@ -41,23 +49,70 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
         String dn= String.valueOf(mData.get(position).getCin());
         String h= String.valueOf(mData.get(position).getTime());
         holder.nomPatient.setText(mData.get(position).getPatient_name());
-        holder.rdvDate.setText(h+" à "+d+":00");
+        holder.rdvDate.setText(h+" à "+d);
         holder.dateNaiss.setText(dn);
         holder.annuler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*String sql = "DELETE FROM `Tache` WHERE `Nom`='"+ holder.tv_book_title.getText()+"' and `Id_Femme`='"+Session.id+"'";
+                String sql = "Update rendez_vous set etat='Reserver' where id_rdv = '"+mData.get(position).getId()+"'";
                 HashMap<String, String> params = new HashMap<>();
                 params.put("sql",sql);
+                Log.i("hhhhhh",sql);
 
                 PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
                     @Override
                     public void processFinish(JSONArray output) {
-                        Toast.makeText(mContext.getApplicationContext(), "suppr", Toast.LENGTH_SHORT).show();
-                        remove(position);
+
+
+                        //Notification
+
+                        String message = "Votre Demande d''annulation n'est pas acceptée "+ mData.get(position).getDate_rdv() +" à "+mData.get(position).getTime()+" de "+mData.get(position).getPatient_name()+ "  ";
+                        Log.i("Message : ",message);
+                        String sql2 = "INSERT INTO `notification` ( `message`,  id_rdv) VALUES ('"+message+"',"+ mData.get(position).getId()+") ";
+
+                        Log.i("SQL : ",sql2);
+
+                        HashMap<String, String> params2 = new HashMap<>();
+                        params2.put("sql",sql2);
+
+
+                        PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
+                            @Override
+                            public void processFinish(JSONArray output) {
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                                builder.setMessage("Annulation refusé")
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                mContext.startActivity(new Intent(mContext.getApplicationContext(),Tabs.class));
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+
+
+                                Log.i("Position : ",String.valueOf(mData.get(position).getId()));
+
+                                remove(position);
+
+
+                            }
+                        });
+                        request2.execute();
+
+
+
+
                     }
                 });
-                request.execute();*/
+                request.execute();
+
+
+                //Toast.makeText(mContext.getApplicationContext(), "edit", Toast.LENGTH_SHORT).show();
+                Log.i("Position",String.valueOf(mData.get(position).getId()) );
+                Log.i("Position",String.valueOf(position) );
                 Toast.makeText(mContext.getApplicationContext(), "annuler", Toast.LENGTH_SHORT).show();
             }
 
@@ -65,13 +120,69 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
         holder.valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext.getApplicationContext(),register.class);
-                mContext.startActivity(intent);
+                String sql = "Update rendez_vous set etat='Annuler' where id_rdv = '"+mData.get(position).getId()+"'";
+                HashMap<String, String> params = new HashMap<>();
+                params.put("sql",sql);
+                Log.i("hhhhhh",sql);
+
+                PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
+                    @Override
+                    public void processFinish(JSONArray output) {
+
+
+                        //Notification
+
+                        String message = "Votre Demande d''annulation est acceptée "+ mData.get(position).getDate_rdv() +" à "+mData.get(position).getTime()+" de "+mData.get(position).getPatient_name()+ "  ";
+                        Log.i("Message : ",message);
+                        String sql2 = "INSERT INTO `notification` ( `message`,  id_rdv) VALUES ('"+message+"',"+ mData.get(position).getId()+") ";
+
+                        Log.i("SQL : ",sql2);
+
+                        HashMap<String, String> params2 = new HashMap<>();
+                        params2.put("sql",sql2);
+
+
+                        PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
+                            @Override
+                            public void processFinish(JSONArray output) {
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                                builder.setMessage("Annulation avec succès")
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                mContext.startActivity(new Intent(mContext.getApplicationContext(),Tabs.class));
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+
+
+                                Log.i("Position : ",String.valueOf(mData.get(position).getId()));
+
+                                remove(position);
+
+
+                            }
+                        });
+                        request2.execute();
+
+
+
+
+                    }
+                });
+                request.execute();
+
+
+                //Toast.makeText(mContext.getApplicationContext(), "edit", Toast.LENGTH_SHORT).show();
+                Log.i("Position",String.valueOf(mData.get(position).getId()) );
+                Log.i("Position",String.valueOf(position) );
                 Toast.makeText(mContext.getApplicationContext(), "valider", Toast.LENGTH_SHORT).show();
 
             }
         });
-
 
 
     }

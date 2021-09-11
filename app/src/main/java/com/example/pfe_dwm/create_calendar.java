@@ -2,11 +2,13 @@ package com.example.pfe_dwm;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,9 +28,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class create_calendar extends AppCompatActivity {
     private CalendarView calendrier;
@@ -90,13 +96,16 @@ public class create_calendar extends AppCompatActivity {
         }
         calendrier = findViewById(R.id.calendarView);
         calendrier.setMinDate(System.currentTimeMillis() - 1000);
-
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        date = df.format(c);
+        Log.i("ffffffff",date);
         calendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Log.i("Checkboxes :  ","tt"+heure.toString());
-
-                date=year+"-"+month+"-"+dayOfMonth;
+                 String monthn=String.valueOf(month+1);
+                date=year+"-"+monthn+"-"+dayOfMonth;
                 Log.i("Checkboxes :  ","Date : "+date);
 
             }
@@ -121,7 +130,7 @@ public class create_calendar extends AppCompatActivity {
                 PerformNetworkRequest requestins = new PerformNetworkRequest(Api.query, paramsqlins, new PerformNetworkRequest.AsyncResponse() {
                     @Override
                     public void processFinish(JSONArray output) {
-                        Log.i("Date" , date);
+                        Log.i("Date" , date.toString());
                         String sqli = " select * from `calendrier` where `date_calendrier`='"+date+"' ";
                         HashMap<String, String> param = new HashMap<>();
                         param.put("sql",sqli);
@@ -161,6 +170,18 @@ public class create_calendar extends AppCompatActivity {
                                                             PerformNetworkRequest requestc = new PerformNetworkRequest(Api.query, paramc, new PerformNetworkRequest.AsyncResponse() {
                                                                 @Override
                                                                 public void processFinish(JSONArray output)  {
+
+                                                                    AlertDialog.Builder builder = new AlertDialog.Builder(create_calendar.this);
+                                                                    builder.setMessage("Date ajouter avec succés")
+                                                                            .setCancelable(false)
+                                                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                                public void onClick(DialogInterface dialog, int id) {
+                                                                                    startActivity(new Intent(getApplicationContext(),create_calendar.class));
+                                                                                }
+                                                                            });
+                                                                    AlertDialog alert = builder.create();
+                                                                    alert.show();
+
 
                                                                 }
                                                             });
