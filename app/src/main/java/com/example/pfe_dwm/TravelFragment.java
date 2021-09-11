@@ -32,9 +32,10 @@ public class TravelFragment extends Fragment {
     RecyclerView myrv;
     rdv_annulation_secretaire myAdapter;
 
-    int idn = 10;
-    String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-            "and r.id_patient=p.id_patient and p.id_account=a.user_id and a.user_id='" + idn + "'";
+    int idn = Session.id;
+
+    String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,secretaire s, `account` a , patient p WHERE r.id_creneaux=c.id_creneaux and r.id_secretaire=s.id_secretaire" +
+            " and s.id_account=a.user_id and r.id_patient = p.id_patient and r.etat='Pre-Annuler' and a.user_id='" + idn + "'";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,8 +88,8 @@ public class TravelFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 Log.v("haaa", query);
 
-                sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-                        "and r.id_patient=p.id_patient and p.id_account=a.user_id and  CIN='" + query + "' ";
+                sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,secretaire s, `account` a , patient p WHERE r.id_creneaux=c.id_creneaux and r.id_secretaire=s.id_secretaire " +
+                        "and s.id_account=a.user_id and r.id_patient = p.id_patient and r.etat='Pre-Annuler' and  CIN='" + query + "' ";
                 stuff(sql);
                 return false;
             }

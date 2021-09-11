@@ -103,43 +103,128 @@ public class patient_rdv extends AppCompatActivity {
 
                                         Log.i("id creneaux",String.valueOf(idc));
                                         String sql3;
+
                                         if ( getIntent().getBooleanExtra("Mod",false)){
                                             Log.i("Modifier : " ,"True");
                                              sql3 ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Pre-Valider')" ;
+
+                                            /// params for sql requete
+                                            HashMap<String, String> params3 = new HashMap<>();
+                                            params3.put("sql",sql3);
+                                            Log.i("ash kn inserer:",sql3);
+
+                                            PerformNetworkRequest request3 = new PerformNetworkRequest(Api.query, params3, new PerformNetworkRequest.AsyncResponse() {
+
+                                                @Override
+                                                public void processFinish(JSONArray output) {
+
+
+
+
+
+                                                 String sqlm =" Select MAX(id_rdv) as id_rdv from rendez_vous  " ;
+
+                                                    /// params for sql requete
+                                                    HashMap<String, String> paramsm = new HashMap<>();
+                                                    paramsm.put("sql",sqlm);
+                                                    Log.i("ash kn inserer:",sqlm);
+
+                                                    PerformNetworkRequest requestm = new PerformNetworkRequest(Api.query, paramsm, new PerformNetworkRequest.AsyncResponse() {
+
+                                                        @Override
+                                                        public void processFinish(JSONArray output) throws JSONException {
+                                                            if (output != null){
+                                                                JSONObject rdv = output.getJSONObject(0);
+
+                                                                int id_rdv_new = rdv.getInt("id_rdv");
+
+                                                                int id_rdv_old = getIntent().getIntExtra("rdv",0);
+
+                                                                Log.i("id_rdv_new",String.valueOf(id_rdv_new));
+                                                                Log.i("id_rdv_old",String.valueOf(id_rdv_old));
+
+
+                                                                String sqlu =" UPDATE `notification` SET  `id_rdv_pm`= '"+ id_rdv_new+"' WHERE id_rdv='"+id_rdv_old+"' " ;
+
+                                                                /// params for sql requete
+                                                                HashMap<String, String> paramsu = new HashMap<>();
+                                                                paramsu.put("sql",sqlu);
+                                                                Log.i("ash kn inserer:",sqlu);
+
+                                                                PerformNetworkRequest requestu = new PerformNetworkRequest(Api.query, paramsu, new PerformNetworkRequest.AsyncResponse() {
+                                                                    @Override
+                                                                    public void processFinish(JSONArray output) throws JSONException {
+
+
+                                                                        AlertDialog.Builder builder = new AlertDialog.Builder(patient_rdv.this);
+                                                                        builder.setMessage("Votre demande est en cours de traitement")
+                                                                                .setCancelable(false)
+                                                                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                                    public void onClick(DialogInterface dialog, int id) {
+                                                                                        Intent i = new Intent(patient_rdv.this,Accueil.class);
+                                                                                        startActivity(i);
+                                                                                    }
+                                                                                });
+                                                                        AlertDialog alert = builder.create();
+                                                                        alert.show();
+
+                                                                    }
+                                                                });
+                                                                requestu.execute();
+
+
+                                                                }
+
+                                                        }
+                                                    });
+                                                    requestm.execute();
+
+
+
+
+
+                                                }
+                                            });
+                                            request3.execute();
                                         }
+
                                         else {
                                             Log.i("Modifier : " ,"false");
 
                                             sql3  ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Reserver')" ;
+
+
+                                            /// params for sql requete
+                                            HashMap<String, String> params3 = new HashMap<>();
+                                            params3.put("sql",sql3);
+                                            Log.i("ash kn inserer:",sql3);
+
+                                            PerformNetworkRequest request3 = new PerformNetworkRequest(Api.query, params3, new PerformNetworkRequest.AsyncResponse() {
+
+                                                @Override
+                                                public void processFinish(JSONArray output) {
+
+
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(patient_rdv.this);
+                                                    builder.setMessage("Votre demande est en cours de traitement")
+                                                            .setCancelable(false)
+                                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int id) {
+                                                                    Intent i = new Intent(patient_rdv.this,Accueil.class);
+                                                                    startActivity(i);
+                                                                }
+                                                            });
+                                                    AlertDialog alert = builder.create();
+                                                    alert.show();
+
+
+                                                }
+                                            });
+                                            request3.execute();
+
                                         }
 
-                                         /// params for sql requete
-                                        HashMap<String, String> params3 = new HashMap<>();
-                                        params3.put("sql",sql3);
-                                        Log.i("ash kn inserer:",sql3);
 
-                                      PerformNetworkRequest request3 = new PerformNetworkRequest(Api.query, params3, new PerformNetworkRequest.AsyncResponse() {
-
-                                            @Override
-                                            public void processFinish(JSONArray output) {
-
-
-                                                AlertDialog.Builder builder = new AlertDialog.Builder(patient_rdv.this);
-                                                builder.setMessage("Votre demande est en cours de traitement")
-                                                        .setCancelable(false)
-                                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                            public void onClick(DialogInterface dialog, int id) {
-                                                                Intent i = new Intent(patient_rdv.this,Accueil.class);
-                                                                startActivity(i);
-                                                            }
-                                                        });
-                                                AlertDialog alert = builder.create();
-                                                alert.show();
-
-
-                                            }
-                                        });
-                                        request3.execute();
 
                                     } catch (JSONException e) {
                                         e.printStackTrace();

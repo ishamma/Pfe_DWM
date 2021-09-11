@@ -114,12 +114,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
             }
 
         });
+
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                String sql = "Update rendez_vous set etat='Modifie' where id_rdv = '"+mData.get(position).getId()+"'";
+                String sql = "Update rendez_vous set etat='Modifier' where id_rdv = '"+mData.get(position).getId()+"'";
                 HashMap<String, String> params = new HashMap<>();
                 params.put("sql",sql);
                 Log.i("hhhhhh",sql);
@@ -148,6 +149,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
 
                                 Intent intent=new Intent(mContext.getApplicationContext(),patient_rdv.class);
                                 intent.putExtra("Mod", true);
+                                intent.putExtra("rdv",  mData.get(position).getId());
+
                                 mContext.startActivity(intent);
 
                                 Log.i("Position : ",String.valueOf(mData.get(position).getId()));

@@ -61,27 +61,15 @@ public class ExploreFragment extends Fragment {
     RecyclerView myrv;
     rdv_secretaire myAdapter;
 
-    int idn=10;
-    String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-            "and r.id_patient=p.id_patient and p.id_account=a.user_id and a.user_id='"+idn+"'";
+    int idn=Session.id;
+    String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,secretaire s, `account` a , patient p WHERE r.id_creneaux=c.id_creneaux and r.id_secretaire=s.id_secretaire " +
+            "and s.id_account=a.user_id and r.id_patient = p.id_patient and r.etat='Reserver' and a.user_id='"+idn+"'";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private TextView dateTextView;
-    private CheckBox modeDarkDate;
-    private CheckBox modeCustomAccentDate;
-    private CheckBox vibrateDate;
-    private CheckBox dismissDate;
-    private CheckBox titleDate;
-    private CheckBox showYearFirst;
-    private CheckBox showVersion2;
-    private CheckBox switchOrientation;
-    private CheckBox limitSelectableDays;
-    private CheckBox highlightDays;
-    private CheckBox defaultSelection;
-    private DatePickerDialog dpd;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -130,8 +118,8 @@ public class ExploreFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 Log.v("haaa",query);
 
-                 sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-                        "and r.id_patient=p.id_patient and p.id_account=a.user_id and  CIN='"+query+"' ";
+                 sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,secretaire s, `account` a , patient p WHERE r.id_creneaux=c.id_creneaux and r.id_secretaire=s.id_secretaire " +
+                         "and s.id_account=a.user_id and r.id_patient = p.id_patient and r.etat='Reserver' and  CIN='"+query+"'";
                 stuff(sql);
                 return false;
             }

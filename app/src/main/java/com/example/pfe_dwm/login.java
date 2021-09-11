@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaCodecInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -83,6 +84,7 @@ public class login extends AppCompatActivity {
                                     JSONObject account = output.getJSONObject(0);
 
                                     id = account.getInt("user_id");
+                                    Log.i("id account",String.valueOf(id));
                                     nom = account.getString("user_name");
                                     email = account.getString("email");
                                     date_creation = account.getString("date_creation");
