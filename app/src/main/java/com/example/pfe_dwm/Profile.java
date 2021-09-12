@@ -330,7 +330,7 @@ public class Profile extends AppCompatActivity {
                 PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                     @Override
                     public void processFinish(JSONArray output) {
-                    Log.i("medcin",output.toString());
+                   // Log.i("medcin",output.toString());
                     }
                 });
                 request2.execute();
@@ -353,7 +353,7 @@ public class Profile extends AppCompatActivity {
                 PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                     @Override
                     public void processFinish(JSONArray output) {
-                        Log.i("secretaire",output.toString());
+                        //Log.i("secretaire",output.toString());
                     }
                 });
                 request2.execute();
@@ -376,7 +376,7 @@ public class Profile extends AppCompatActivity {
                 PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                     @Override
                     public void processFinish(JSONArray output) {
-                        Log.i("patient",output.toString());
+                        //Log.i("patient",output.toString());
                     }
                 });
                 request2.execute();

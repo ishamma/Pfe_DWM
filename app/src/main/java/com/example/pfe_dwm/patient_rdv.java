@@ -238,6 +238,9 @@ public class patient_rdv extends AppCompatActivity {
                 });
                 request.execute();
 
+
+
+
             }
         });
 

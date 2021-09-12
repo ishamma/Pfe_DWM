@@ -1,5 +1,6 @@
 package com.example.pfe_dwm;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SearchView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,12 +88,24 @@ public class secretaire_account_fragement extends Fragment {
         // Inflate the layout for this fragment
         myview = inflater.inflate(R.layout.fragment_secretaire_account, container, false);
         SearchView search = myview.findViewById(R.id.recherche);
+
+        FloatingActionButton add = myview.findViewById(R.id.addsec);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(myview.getContext(),gestion_sec.class));
+            }
+        });
+
+
+
+
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Log.v("haaa",query);
 
-                sql = "SELECT * FROM secretaire WHERE CIN='"+query+"'";
+                sql = "SELECT * FROM secretaire WHERE cin_sec='"+query+"'";
                 stuff(sql);
                 return false;
             }

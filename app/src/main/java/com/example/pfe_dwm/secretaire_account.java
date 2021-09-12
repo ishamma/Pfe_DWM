@@ -109,7 +109,14 @@ public class secretaire_account extends RecyclerView.Adapter<secretaire_account.
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext.getApplicationContext(), "edit", Toast.LENGTH_SHORT).show();
+
+
+
+                Intent intent=new Intent(mContext.getApplicationContext(),gestion_sec.class);
+                intent.putExtra("Mod", true);
+                intent.putExtra("id_sec",  mData.get(position).getId_sec());
+
+                mContext.startActivity(intent);
 
 
             }
