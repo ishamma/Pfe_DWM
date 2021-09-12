@@ -106,7 +106,7 @@ public class patient_rdv extends AppCompatActivity {
 
                                         if ( getIntent().getBooleanExtra("Mod",false)){
                                             Log.i("Modifier : " ,"True");
-                                             sql3 ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Pre-Valider')" ;
+                                             sql3 ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',2,"+idpp+","+idc+",1,'Pre-Valider')" ;
 
                                             /// params for sql requete
                                             HashMap<String, String> params3 = new HashMap<>();
@@ -191,7 +191,7 @@ public class patient_rdv extends AppCompatActivity {
                                         else {
                                             Log.i("Modifier : " ,"false");
 
-                                            sql3  ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',1,"+idpp+","+idc+",1,'Reserver')" ;
+                                            sql3  ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',2,"+idpp+","+idc+",1,'Reserver')" ;
 
 
                                             /// params for sql requete
@@ -206,11 +206,11 @@ public class patient_rdv extends AppCompatActivity {
 
 
                                                     AlertDialog.Builder builder = new AlertDialog.Builder(patient_rdv.this);
-                                                    builder.setMessage("Votre demande est en cours de traitement")
+                                                    builder.setMessage("Rendez-vous reservé")
                                                             .setCancelable(false)
                                                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                                 public void onClick(DialogInterface dialog, int id) {
-                                                                    Intent i = new Intent(patient_rdv.this,Accueil.class);
+                                                                    Intent i = new Intent(patient_rdv.this,MesRendezVous.class);
                                                                     startActivity(i);
                                                                 }
                                                             });
@@ -262,7 +262,7 @@ public class patient_rdv extends AppCompatActivity {
                  Ndatei= String.valueOf(year)+"-"+String.valueOf(month+1)+"-"+String.valueOf(dayOfMonth);
                 date.setText(Ndate);
                  Log.i("eee",Ndatei);
-               String sql = "SELECT  * FROM creneaux,calendrier  where  calendrier.id_calendrier=creneaux.id_calendrier and calendrier.date_calendrier='"+Ndatei+"'";
+               String sql = "SELECT  * FROM creneaux,calendrier where  calendrier.id_calendrier=creneaux.id_calendrier and creneaux.id_creneaux not in(Select id_creneaux from rendez_vous where date_rdv='"+Ndatei+"') and calendrier.date_calendrier='"+Ndatei+"'";
                 Log.i("requet",sql);
 
                 // String sql ="Select * from creneaux";
@@ -365,7 +365,7 @@ public class patient_rdv extends AppCompatActivity {
         }
 
 
-        for ( int i = 4 ; i <lst.size()-1 ; i++ ) {
+        for ( int i = 4 ; i <lst.size() ; i++ ) {
             RadioButton rb = new RadioButton(getApplicationContext());
             rb.setText(lst.get(i));
             rb.setHint("22");

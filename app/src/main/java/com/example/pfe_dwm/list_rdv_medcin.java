@@ -35,7 +35,7 @@ public class list_rdv_medcin extends Fragment {
 
     int idn=10;
     String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-            "and r.id_patient=p.id_patient and p.id_account=a.user_id ";
+            "and r.id_patient=p.id_patient and p.id_account=a.user_id and r.etat='Reserver'";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,7 +89,7 @@ public class list_rdv_medcin extends Fragment {
                 Log.v("haaa",query);
 
                 sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-                        "and r.id_patient=p.id_patient and p.id_account=a.user_id and  CIN='"+query+"' ";
+                        "and r.id_patient=p.id_patient and p.id_account=a.user_id and r.etat='Reserver' and  CIN='"+query+"' ";
                 stuff(sql);
                 return false;
             }

@@ -120,24 +120,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/cnss"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_round"
-                    android:ems="10"
-                    android:hint="Entrez votre type cnss"
-                    android:inputType="textEmailAddress"
-                    android:paddingLeft="20dp" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -191,7 +174,7 @@
                     android:background="@drawable/btn_round"
                     android:ems="10"
                     android:hint="Mot de pass"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textWebPassword"
                     android:paddingLeft="20dp" />
 
             </LinearLayout>

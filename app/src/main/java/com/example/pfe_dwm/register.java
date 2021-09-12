@@ -28,7 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class register extends AppCompatActivity {
-TextView nom ,prenom,cin,tele,cnss,adresse,date,email,password;
+TextView nom ,prenom,cin,tele,adresse,date,email,password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ TextView nom ,prenom,cin,tele,cnss,adresse,date,email,password;
         prenom=findViewById(R.id.prenom);
         cin=findViewById(R.id.cin);
         tele=findViewById(R.id.tele);
-        cnss=findViewById(R.id.cnss);
         adresse=findViewById(R.id.adresse);
         date=findViewById(R.id.date);
         email=findViewById(R.id.email);
@@ -93,7 +92,7 @@ TextView nom ,prenom,cin,tele,cnss,adresse,date,email,password;
 
                                             Log.i("id account",String.valueOf(idac));
 
-                                            String sql3 = "INSERT INTO `patient`( `nom_patient`, `prenom_patient`, `CIN`, `adress_patient`, `tel_patient`, `date_naiss`, `cnss`, `id_account`) VALUES ('"+nom.getText().toString()+"','"+prenom.getText().toString()+"','"+cin.getText().toString()+"','"+adresse.getText().toString()+"','"+tele.getText().toString()+"','"+date.getText().toString()+"','"+cnss.getText().toString()+"','"+idac+"');" ;
+                                            String sql3 = "INSERT INTO `patient`( `nom_patient`, `prenom_patient`, `CIN`, `adress_patient`, `tel_patient`, `date_naiss`,`id_account`) VALUES ('"+nom.getText().toString()+"','"+prenom.getText().toString()+"','"+cin.getText().toString()+"','"+adresse.getText().toString()+"','"+tele.getText().toString()+"','"+date.getText().toString()+"','"+idac+"');" ;
                                             /// params for sql requete
                                             HashMap<String, String> params3 = new HashMap<>();
                                             params3.put("sql",sql3);
