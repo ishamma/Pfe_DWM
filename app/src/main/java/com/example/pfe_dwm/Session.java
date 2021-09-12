@@ -9,4 +9,5 @@ public class Session {
     public static String email = "email";
     public static String dateCreation = "date_creation";
     public static int id_role = 0;
+    public static String password="*****";
 }

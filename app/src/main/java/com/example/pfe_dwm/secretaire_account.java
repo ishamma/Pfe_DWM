@@ -60,6 +60,46 @@ public class secretaire_account extends RecyclerView.Adapter<secretaire_account.
         holder.Supp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage("Voulez-vous supprimer cette secretaire ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                String sql = "DELETE s, a" +
+                                        "      FROM secretaire s" +
+                                        "      JOIN account a ON a.user_id = s.id_account" +
+                                        "     WHERE s.id_secretaire = '"+mData.get(position).getId_sec()+"'";
+
+                                Log.i("SQL : ",sql);
+
+                                HashMap<String, String> params = new HashMap<>();
+                                params.put("sql",sql);
+
+
+                                PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
+                                    @Override
+                                    public void processFinish(JSONArray output) {
+
+                                        Log.i("Position : ",String.valueOf(mData.get(position).getId_sec()));
+
+                                        remove(position);
+
+
+                                    }
+                                });
+                                request.execute();
+                            }
+                        })
+                        .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.setTitle("");
+                alert.show();
+
                 Toast.makeText(mContext.getApplicationContext(), "supp", Toast.LENGTH_SHORT).show();
 
             }
@@ -69,7 +109,6 @@ public class secretaire_account extends RecyclerView.Adapter<secretaire_account.
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Toast.makeText(mContext.getApplicationContext(), "edit", Toast.LENGTH_SHORT).show();
 
 

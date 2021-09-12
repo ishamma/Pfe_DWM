@@ -34,7 +34,7 @@ public class secretaire_create_account extends AppCompatActivity {
 
 
         frameLayout = findViewById(R.id.list_sec);
-        sec_list = new rdv_list();
+        sec_list = new secretaire_account_fragement();
 
 
         loadFragment(sec_list);

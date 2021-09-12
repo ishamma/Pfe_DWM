@@ -104,7 +104,6 @@ public class secretaire_account_fragement extends Fragment {
     }
     public void stuff( String sql ){
 
-
         HashMap<String, String> params = new HashMap<>();
         params.put("sql", sql);
         PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {

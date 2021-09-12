@@ -2,7 +2,6 @@ package com.example.pfe_dwm;
 
 public class dataSecretaire {
 
-    public  int id_secretaire;
     public String patient_name;
     public String time;
     public String date_rdv;
@@ -15,13 +14,7 @@ public class dataSecretaire {
         this.cin = cin;
     }
 
-    public int getId_secretaire() {
-        return id_secretaire;
-    }
 
-    public void setId_secretaire(int id_secretaire) {
-        this.id_secretaire = id_secretaire;
-    }
 
     public String getPatient_name() {
         return patient_name;

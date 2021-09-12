@@ -66,7 +66,7 @@ public class login extends AppCompatActivity {
                         if (output != null) {
                             try {
                                 if (output.getJSONObject(0).getInt("user_id") != 0) {
-                                    String nom, email, date_creation;
+                                    String nom, email, date_creation,password;
                                     int id, id_role;
                                     JSONObject account = output.getJSONObject(0);
 
@@ -76,12 +76,14 @@ public class login extends AppCompatActivity {
                                     email = account.getString("email");
                                     date_creation = account.getString("date_creation");
                                     id_role = account.getInt("id_role");
+                                    password=account.getString("password");
 
                                     Session.id = id;
                                     Session.user_name = nom;
                                     Session.email = email;
                                     Session.dateCreation = date_creation;
                                     Session.id_role = id_role;
+                                    Session.password=password;
                                     if (id_role == 3) {
                                         Intent i = new Intent(login.this, Accueil.class);
                                         startActivity(i);
