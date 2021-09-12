@@ -90,6 +90,10 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
 
                                                 Log.i("SQL : ",sql2);
 
+
+
+
+
                                                 HashMap<String, String> params2 = new HashMap<>();
                                                 params2.put("sql",sql2);
 
@@ -160,6 +164,11 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
                         String message = "Votre Demande de modification est acceptée "+ mData.get(position).getDate_rdv() +" à "+mData.get(position).getTime()+" de "+mData.get(position).getPatient_name()+ "  ";
                         Log.i("Message : ",message);
                         String sql2 = "INSERT INTO `notification` ( `message`,  id_rdv) VALUES ('"+message+"',"+ mData.get(position).getId()+") ";
+
+
+
+
+
 
                         Log.i("SQL : ",sql2);
 
