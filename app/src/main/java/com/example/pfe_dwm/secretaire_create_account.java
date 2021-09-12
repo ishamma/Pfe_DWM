@@ -6,31 +6,42 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class medecin extends AppCompatActivity {
+public class secretaire_create_account extends AppCompatActivity {
+    private DrawerLayout mDrawerLayout;
+    private FrameLayout frameLayout;
+    private Fragment sec_list;
+    Toolbar toolbar;
 
-    DrawerLayout mDrawerLayout;
-    Toolbar toolbar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.medecin_acceuil);
+        setContentView(R.layout.activity_secretaire_create_account);
         if(Session.id==0){
             startActivity(new Intent(this,login.class));
         }
 
+
+
+        frameLayout = findViewById(R.id.list_sec);
+        sec_list = new rdv_list();
+
+
+        loadFragment(sec_list);
         Navigation();
         //////////////////////Button pour ouvrir naviagtion ////////////////////
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbarrdv);
         setSupportActionBar(toolbar);
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
@@ -40,8 +51,14 @@ public class medecin extends AppCompatActivity {
         //////////////////////////////////////////
 
     }
-
-
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//frame_container is your layout name in xml file
+        transaction.replace(R.id.list_sec, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
     public  void Navigation(){
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -95,6 +112,4 @@ public class medecin extends AppCompatActivity {
         });
 
     }
-
-
 }

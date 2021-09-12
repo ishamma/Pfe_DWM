@@ -7,9 +7,7 @@
     android:background="@drawable/log"
     tools:context=".login">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar" />
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -72,13 +70,13 @@
                 android:id="@+id/txtpassword"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_round"
                 android:ems="10"
                 android:hint=" Mot de pass"
-                android:layout_marginBottom="10dp"
-                android:paddingLeft="20dp"
-                android:inputType="textEmailAddress" />
+                android:inputType="textWebPassword"
+                android:paddingLeft="20dp" />
 
         </LinearLayout>
 
@@ -109,20 +107,6 @@
             android:gravity="right"
             android:text="Creer votre compte"
             android:textColor="#605F5F" />
-
-        <Button
-            android:id="@+id/chart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:backgroundTint="#AE5656" />
-
-        <Button
-            android:id="@+id/nav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Menus"
-            app:backgroundTint="#AE5656" />
 
     </LinearLayout>
 

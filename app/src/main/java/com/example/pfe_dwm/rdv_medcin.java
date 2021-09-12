@@ -98,7 +98,7 @@ public class rdv_medcin extends AppCompatActivity {
                     }
 
                     case R.id.gstsec: {
-                        startActivity(new Intent(getApplicationContext(),patient_rdv.class));
+                        startActivity(new Intent(getApplicationContext(),secretaire_create_account.class));
                         break;
                     }
 

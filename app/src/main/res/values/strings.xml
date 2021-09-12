@@ -26,4 +26,5 @@ notamment à l’aide des machines automatique.</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_secretaire_create_account">secretaire_create_account</string>
 </resources>

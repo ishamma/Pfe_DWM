@@ -172,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
                                     a = Float.valueOf(etat_rdv.getString("annuler"));
                                     d = Float.valueOf(etat_rdv.getString("dispo"));
                                     Log.i("etaaat:", String.valueOf(r));
-                                    float l = 66;
                                     /////Pie Code //////////////////////
 
                                     fillPie(r, a, d);
@@ -657,6 +656,7 @@ public class MainActivity extends AppCompatActivity {
         piechart.setCenterText("Etat de Rendez-vous");
 
         piechart.invalidate();
+
 }
 
     public  void Navigation(){
@@ -685,7 +685,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     case R.id.gstsec: {
-                        startActivity(new Intent(getApplicationContext(),patient_rdv.class));
+                        startActivity(new Intent(getApplicationContext(),secretaire_create_account.class));
                         break;
                     }
 

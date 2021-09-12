@@ -1,93 +1,116 @@
 package com.example.pfe_dwm;
 
-import androidx.annotation.NonNull;
+
+import android.content.Context;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
+import org.json.JSONArray;
 
-public class secretaire_account extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 
-    private DrawerLayout mDrawerLayout;
-    //private NavigationView mDrawerLayout;
-    private Toolbar toolbar;
+
+public class secretaire_account extends RecyclerView.Adapter<secretaire_account.MyViewHolder> {
+
+    DrawerLayout mDrawerLayout;
+    Toolbar toolbar ;
+
+    private Context mContext ;
+    private List<secData> mData ;
+
+
+    public secretaire_account(Context mContext, List<secData> mData) {
+        this.mContext = mContext;
+        this.mData = mData;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_secretaire_account);
-        //////////////////////Button pour ouvrir naviagtion ////////////////////
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
-                this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
-        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        //navigationView.setNavigationItemSelectedListener(this);
-        //////////////////////////////////////////
+        View view ;
+        LayoutInflater mInflater = LayoutInflater.from(mContext);
+        view = mInflater.inflate(R.layout.activity_secretaire_account,parent,false);
+              
+        return new MyViewHolder(view);
     }
-    public  void Navigation(){
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-        // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        Menu menu = navigationView.getMenu();
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        holder.sec_nom.setText(mData.get(position).getNom_sec());
+        holder.sec_cin.setText(mData.get(position).getCin_sec());
+        holder.tele.setText(mData.get(position).getTele());
+        holder.Supp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.acceuil_medcin: {
-                        startActivity(new Intent(getApplicationContext(),medecin.class));
-                        break;
-                    }
+            public void onClick(View v) {
+                Toast.makeText(mContext.getApplicationContext(), "supp", Toast.LENGTH_SHORT).show();
 
-                    case R.id.dashboard: {
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        break;
-                    }
-                    case R.id.calmed: {
-                        startActivity(new Intent(getApplicationContext(),medcin_calendar.class));
-                        break;
-                    }
+            }
 
-                    case R.id.gstsec: {
-                        startActivity(new Intent(getApplicationContext(),patient_rdv.class));
-                        break;
-                    }
+        });
 
-                    case R.id.rdvlist: {
-                        startActivity(new Intent(getApplicationContext(),rdv_medcin.class));
-                        break;
-                    }
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(mContext.getApplicationContext(), "edit", Toast.LENGTH_SHORT).show();
 
 
-                    case R.id.profile: {
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
-                        break;
-                    }
-                    case R.id.log_out: {
-                        Session.id=0;
-                        startActivity(new Intent(getApplicationContext(),login.class));
-                        break;
-                    }
-                }
-                //close navigation drawer
-                mDrawerLayout.closeDrawer(GravityCompat.START);
-                return true;
             }
         });
 
     }
+
+    @Override
+    public int getItemCount() {
+        return mData.size();
+    }
+
+    private void remove(int position){
+
+        mData.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+
+        TextView sec_nom;
+        TextView sec_cin;
+        TextView tele;
+        ImageView Supp;
+        ImageView edit;
+
+
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+
+
+            sec_nom = (TextView) itemView.findViewById(R.id.nom_sec) ;
+            sec_cin = (TextView) itemView.findViewById(R.id.cin_sec);
+            tele =(TextView) itemView.findViewById(R.id.tele);
+            Supp = itemView.findViewById(R.id.remove);
+            edit = itemView.findViewById(R.id.edit);
+
+        }
+    }
+
 
 }
