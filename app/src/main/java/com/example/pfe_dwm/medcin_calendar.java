@@ -166,7 +166,7 @@ public class medcin_calendar extends AppCompatActivity {
                 button.setId(buttonIdNumber);
                 button.setLayoutParams(new LinearLayout.LayoutParams(50, 50));
                 button.setTextSize(20);
-                button.setTextColor(Color.parseColor("#546d44"));
+                button.setTextColor(Color.parseColor("#57A0D2"));
                 button.setLayoutParams(params);
                 button.setText(heure.get(j));
 
@@ -299,7 +299,7 @@ public class medcin_calendar extends AppCompatActivity {
                     button.setId(buttonIdNumber);
                     button.setLayoutParams(new LinearLayout.LayoutParams(50, 50));
                     button.setTextSize(20);
-                    button.setTextColor(Color.parseColor("#546d44"));
+                    button.setTextColor(Color.parseColor("#57A0D2"));
                     button.setLayoutParams(params);
                     button.setText(heure_ln2.get(j));
 

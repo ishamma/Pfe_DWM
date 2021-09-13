@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.Calendar;
 import java.util.HashMap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,7 +30,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class register extends AppCompatActivity {
-TextView nom ,prenom,cin,tele,adresse,date,email,password;
+EditText nom ,prenom,cin,tele,adresse,date,email,password;
+    Calendar myCalendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ TextView nom ,prenom,cin,tele,adresse,date,email,password;
         tele=findViewById(R.id.tele);
         adresse=findViewById(R.id.adresse);
         date=findViewById(R.id.date);
+
         email=findViewById(R.id.email);
         password=findViewById(R.id.mdp);
 

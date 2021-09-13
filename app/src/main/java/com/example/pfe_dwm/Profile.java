@@ -74,7 +74,7 @@ public class Profile extends AppCompatActivity {
         });
 
 
-        ////////////////******kn3emruuuu djaj*****//////////////////
+        ////////////////******Affichage des donnes*****//////////////////
         email.setText(Session.email);
         psw.setText(Session.password);
 

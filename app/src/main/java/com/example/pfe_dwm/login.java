@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class login extends AppCompatActivity {
-    TextView username,password,register;
+    TextView email,password,register;
     String result;
     Toolbar toolbar;
     @Override
@@ -39,7 +39,7 @@ public class login extends AppCompatActivity {
         Button btn1 = findViewById(R.id.btn_log);
         register = findViewById(R.id.textView6);
 
-        username = findViewById(R.id.txtemail);
+        email = findViewById(R.id.txtemail);
         password = findViewById(R.id.txtpassword);
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +49,7 @@ public class login extends AppCompatActivity {
 //                startActivity(intent);
 
 
-                String sql = "SELECT  * FROM `account` where email = '" + username.getText().toString() + "' and password = '" + password.getText().toString() + "'";
+                String sql = "SELECT  * FROM `account` where email = '" + email.getText().toString() + "' and password = '" + password.getText().toString() + "'";
                 HashMap<String, String> params = new HashMap<String, String>();
                 params.put("sql", sql);
 
