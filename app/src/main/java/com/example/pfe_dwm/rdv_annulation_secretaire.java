@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.se.omapi.SEService;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,7 +99,7 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
                                         .setCancelable(false)
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
-                                                mContext.startActivity(new Intent(mContext.getApplicationContext(),Tabs.class));
+                                               mContext.startActivity(new Intent(mContext.getApplicationContext(),Tabs.class));
                                             }
                                         });
                                 AlertDialog alert = builder.create();
@@ -160,6 +162,5 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
 
         }
     }
-
 
 }
