@@ -49,6 +49,8 @@ public class secretaire_create_account extends AppCompatActivity {
                 this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
         mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         //navigationView.setNavigationItemSelectedListener(this);
         //////////////////////////////////////////
 

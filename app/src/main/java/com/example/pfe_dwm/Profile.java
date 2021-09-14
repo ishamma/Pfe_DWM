@@ -167,13 +167,15 @@ public class Profile extends AppCompatActivity {
         }
 
         //////////////////////Button pour ouvrir naviagtion ////////////////////
-        toolbar = findViewById(R.id.toolbarpr);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layoutpr);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
         mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         //navigationView.setNavigationItemSelectedListener(this);
         //////////////////////////////////////////
     }
@@ -187,7 +189,7 @@ public class Profile extends AppCompatActivity {
         TextView username = (TextView) header.findViewById(R.id.nom_menu);
         username.setText(Session.user_name);
         navigationView.inflateMenu(R.menu.menu_patient);
-       // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

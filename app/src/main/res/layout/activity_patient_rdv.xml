@@ -9,40 +9,45 @@ tools:context=".patient_rdv"
 android:background="@color/white">
 
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
-
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarres"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:layout_marginTop="-38dp"
-            android:paddingRight="10dp">
+        android:layout_height="match_parent"
+      >
 
-            <include
-                layout="@layout/activity_notif_icon"
-                android:layout_width="wrap_content"
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
-        </LinearLayout>
+                android:gravity="right"
+                android:layout_marginTop="-38dp"
+                android:paddingRight="10dp">
 
-    </com.google.android.material.appbar.AppBarLayout>
+                <include
+                    layout="@layout/activity_notif_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+        </com.google.android.material.appbar.AppBarLayout>
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="60dp"
+    android:fillViewport="true"
+  >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,21 +55,10 @@ android:background="@color/white">
         android:layout_marginTop="1dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@color/ihneBlue"
-            android:orientation="vertical"
-            android:padding="5dp">
-
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
 
@@ -82,21 +76,21 @@ android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
 
                 <CalendarView
                     android:id="@+id/datePicker"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:layout_marginTop="-30dp"
@@ -150,7 +144,7 @@ android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="10dp">
@@ -169,7 +163,7 @@ android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center">
 
@@ -186,7 +180,7 @@ android:background="@color/white">
         </LinearLayout>
 
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
 <com.google.android.material.navigation.NavigationView
     android:id="@+id/nav_view"
     android:layout_width="wrap_content"

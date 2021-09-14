@@ -50,6 +50,7 @@ public class rdv_medcin extends AppCompatActivity {
                 this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
         mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         //navigationView.setNavigationItemSelectedListener(this);
         //////////////////////////////////////////
         tabLayout = findViewById(R.id.tab_layout);

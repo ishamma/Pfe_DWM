@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">Cabinet Médical</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile">Hello blank fragment</string>
     <string name="rdv">Hello blank fragment</string>
     <string name="calendar">Hello blank fragment</string>
     <string name="reserve">Hello blank fragment</string>
+    <string name="notif">Demande de Modification de Rendez-vous 2021-09-14 à 09:00 de nouhaila el arroum</string>
     <string name="intro">L’informatique cette science de travail rationnel de l’information est considérée comme le
 support des connaissances dans les domaines scientifiques, économiques et sociaux
 notamment à l’aide des machines automatique.</string>

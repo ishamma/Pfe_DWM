@@ -351,16 +351,7 @@ public class patient_rdv extends AppCompatActivity {
         });
 
         Navigation();
-        //////////////////////Button pour ouvrir naviagtion ////////////////////
-        toolbar = findViewById(R.id.toolbarres);
-        setSupportActionBar(toolbar);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
-                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
-        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        //navigationView.setNavigationItemSelectedListener(this);
-        //////////////////////////////////////////
+
     }
 
     public  void fill(ArrayList<String> lst){
@@ -390,11 +381,24 @@ public class patient_rdv extends AppCompatActivity {
     }
 
     public  void Navigation(){
+        //////////////////////Button pour ouvrir naviagtion ////////////////////
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        mDrawerLayout.bringToFront();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        //navigationView.setNavigationItemSelectedListener(this);
+        //////////////////////////////////////////
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header = navigationView.getHeaderView(0);
         TextView username = (TextView) header.findViewById(R.id.nom_menu);
         username.setText(Session.user_name);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

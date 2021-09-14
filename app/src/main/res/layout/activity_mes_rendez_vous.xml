@@ -6,22 +6,22 @@ xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/drawer_layout"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".MesRendezVous"
-    android:background="@color/white"
+ android:background="@drawable/bg_design"
+    tools:context=".MesRendezVous"
     >
 
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_design">
+    >
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarrdv"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"/>
         <LinearLayout
@@ -43,19 +43,17 @@ tools:context=".MesRendezVous"
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/scrollView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fillViewport="true"
+        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
-        android:padding="20dp"
+        android:padding="8dp"
         >
 
    <FrameLayout
@@ -64,7 +62,7 @@ tools:context=".MesRendezVous"
        android:id="@+id/list_rdv"
        />
     </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

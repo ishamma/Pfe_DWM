@@ -53,13 +53,15 @@ public class MesRendezVous extends AppCompatActivity {
         loadFragment(Rdv_list);
         Navigation();
         //////////////////////Button pour ouvrir naviagtion ////////////////////
-        toolbar = findViewById(R.id.toolbarrdv);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
         mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         //navigationView.setNavigationItemSelectedListener(this);
         //////////////////////////////////////////
 

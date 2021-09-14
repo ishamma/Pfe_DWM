@@ -38,8 +38,8 @@ public class notif_list extends RecyclerView.Adapter<com.example.pfe_dwm.notif_l
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         String n = String.valueOf(mData.get(position).getMessage());
-        holder.tv_book_title.setText(mData.get(position).getDate_notif());
-        holder.tv_book_title_2.setText(n);
+        holder.tv_book_title_2.setText(mData.get(position).getDate_notif());
+        holder.tv_book_title.setText(n);
     }
 
 
