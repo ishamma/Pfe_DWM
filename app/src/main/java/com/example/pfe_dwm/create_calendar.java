@@ -53,8 +53,9 @@ public class create_calendar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_calendar);
-
-
+        if(Session.id==0){
+            startActivity(new Intent(this,login.class));
+        }
 
         Navigation();
         //////////////////////Button pour ouvrir naviagtion ////////////////////
@@ -96,6 +97,7 @@ public class create_calendar extends AppCompatActivity {
             });
         }
         calendrier = findViewById(R.id.calendarView);
+
         calendrier.setMinDate(System.currentTimeMillis() - 1000);
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -118,11 +120,7 @@ public class create_calendar extends AppCompatActivity {
             public void onClick(View v) {
 
 
-//                deletecal();
-//                Insertcal();
-//                getIdcal();
-//                getIdsec();
-//                Insertcre();
+//
 
                 String sqlins = "INSERT INTO `calendrier`(`date_calendrier`) VALUES ('"+date+"') ";
                 HashMap<String, String> paramsqlins = new HashMap<>();

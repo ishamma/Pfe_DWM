@@ -16,7 +16,8 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"/>
+                android:layout_height="?attr/actionBarSize"
+              />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -39,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:text="Créer votre calnedrier"
+                android:text="Créer votre calendrier"
                 android:textColor="@color/ihneBlue"
                 android:textSize="25dp"
 

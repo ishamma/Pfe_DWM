@@ -97,10 +97,12 @@ public class patient_rdv extends AppCompatActivity {
                             }
                         }
 
-                        String sql2 = "select id_creneaux from creneaux where heure='"+index+"'" ;
+                        String sql2 = "select *  from creneaux c, calendrier cl where c.id_calendrier=cl.id_calendrier and cl.date_calendrier='"+Ndatei+"'and heure='"+index+"'" ;
                         /// params for sql requete
                         HashMap<String, String> params2 = new HashMap<>();
                         params2.put("sql",sql2);
+                        Log.i("reqeeee:",sql2);
+
                         PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                             @Override
                             public void processFinish(JSONArray output) throws JSONException {
