@@ -13,7 +13,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -62,7 +64,9 @@ public class secretaire_create_account extends AppCompatActivity {
     public  void Navigation(){
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        View header = navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.nom_menu);
+        username.setText(Session.user_name);
         // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 

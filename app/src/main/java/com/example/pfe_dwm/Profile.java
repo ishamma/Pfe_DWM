@@ -183,6 +183,9 @@ public class Profile extends AppCompatActivity {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.getMenu().clear();
+        View header = navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.nom_menu);
+        username.setText(Session.user_name);
         navigationView.inflateMenu(R.menu.menu_patient);
        // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
@@ -226,6 +229,9 @@ public class Profile extends AppCompatActivity {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.getMenu().clear();
+        View header = navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.nom_menu);
+        username.setText(Session.user_name);
         navigationView.inflateMenu(R.menu.menu_sectaire);
         // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
@@ -263,6 +269,9 @@ public class Profile extends AppCompatActivity {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.getMenu().clear();
+        View header = navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.nom_menu);
+        username.setText(Session.user_name);
         navigationView.inflateMenu(R.menu.nav_menu);
         // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();

@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class patient_rdv extends AppCompatActivity {
     private int idpp,idc;
     String Ndate, Ndatei;
     Toolbar toolbar;
+    notif_icon notif = new notif_icon();
     DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,16 @@ public class patient_rdv extends AppCompatActivity {
             startActivity(new Intent(this,login.class));
         }
 
-
+        /******notif icon*************/
+        notif.notif_nbr(this);
+        ImageView notif_cards=findViewById(R.id.notif_icon);
+        notif_cards.bringToFront();
+        notif_cards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                notif.notif_list_btn(patient_rdv.this);
+            }
+        });
         calendrier= findViewById(R.id.datePicker);
         date = findViewById(R.id.maDate);
         time = findViewById(R.id.radioC);
@@ -378,7 +389,9 @@ public class patient_rdv extends AppCompatActivity {
 
     public  void Navigation(){
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        View header = navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.nom_menu);
+        username.setText(Session.user_name);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 

@@ -160,4 +160,6 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
 
         }
     }
+
+
 }

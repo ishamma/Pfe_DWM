@@ -98,8 +98,6 @@ public class secretaire_account_fragement extends Fragment {
         });
 
 
-
-
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

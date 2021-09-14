@@ -21,6 +21,19 @@ android:background="@color/white">
             android:id="@+id/toolbarres"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="-38dp"
+            android:paddingRight="10dp">
+
+            <include
+                layout="@layout/activity_notif_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 

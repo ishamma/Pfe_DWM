@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +34,8 @@ public class rdv_list extends Fragment {
     LinearLayout l;
     RecyclerView myrv;
     RecyclerAdapter myAdapter;
+    int idn=Session.id;
+    String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux and r.id_patient=p.id_patient and p.id_account=a.user_id and r.etat='Reserver' and a.user_id='"+idn+"'";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,15 +82,31 @@ public class rdv_list extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         myview = inflater.inflate(R.layout.rdv_list, container, false);
-        stuff();
+        SearchView search = myview.findViewById(R.id.rdv_search);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.v("haaa",query);
+
+                String sql2 = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux and r.id_patient=p.id_patient and p.id_account=a.user_id and r.etat='Reserver' and a.user_id='"+idn+"'and r.date_rdv='"+query+"'";
+                stuff(sql2);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        stuff(sql);
         return myview;
     }
 
 
-    public void stuff(){
-        int idn=Session.id;
-        String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
-                "and r.id_patient=p.id_patient and p.id_account=a.user_id and r.etat='Reserver' and a.user_id='"+idn+"'";
+    public void stuff(String sql){
+       /* String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,`patient` p, `account` a  WHERE r.id_creneaux=c.id_creneaux " +
+                "and r.id_patient=p.id_patient and p.id_account=a.user_id and r.etat='Reserver' and a.user_id='"+idn+"'";*/
         HashMap<String, String> params = new HashMap<>();
         params.put("sql", sql);
         PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {

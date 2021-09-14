@@ -6,63 +6,65 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class medecin extends AppCompatActivity {
+public class notif_patient_affichage extends AppCompatActivity {
+    private DrawerLayout mDrawerLayout;
+    private FrameLayout frameLayout;
+    private Fragment notif_list;
+    Toolbar toolbar;
 
-    DrawerLayout mDrawerLayout;
-    Toolbar toolbar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.medecin_acceuil);
+        setContentView(R.layout.activity_notif_patient_affichage);
         if(Session.id==0){
             startActivity(new Intent(this,login.class));
         }
-        ImageButton img1= findViewById(R.id.pie);
-        ImageButton img2= findViewById(R.id.calendar);
-        ImageButton img3= findViewById(R.id.rdvlst);
-        ImageButton img4= findViewById(R.id.secr);
 
-        img1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
-            }
-        });
-        img2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),medcin_calendar.class));
 
-            }
-        });
-        img3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),rdv_medcin.class));
+        frameLayout = findViewById(R.id.list_notif);
+        notif_list = new notifFragment();
+        loadFragment(notif_list);
 
-            }
-        });
-        img4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),secretaire_create_account.class));
-
-            }
-        });
+        notif_icon notif = new notif_icon();
+        notif.notif_nbr(this);
 
         Navigation();
+        //////////////////////Button pour ouvrir naviagtion ////////////////////
+        toolbar = findViewById(R.id.toolbarrdv);
+        setSupportActionBar(toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        //navigationView.setNavigationItemSelectedListener(this);
+        //////////////////////////////////////////
+
+    }
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//frame_container is your layout name in xml file
+        transaction.replace(R.id.list_notif, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+    public  void Navigation(){
+
         //////////////////////Button pour ouvrir naviagtion ////////////////////
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -74,17 +76,10 @@ public class medecin extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         //navigationView.setNavigationItemSelectedListener(this);
         //////////////////////////////////////////
-
-    }
-
-
-    public  void Navigation(){
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header = navigationView.getHeaderView(0);
         TextView username = (TextView) header.findViewById(R.id.nom_menu);
         username.setText(Session.user_name);
-
         // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 
@@ -92,31 +87,19 @@ public class medecin extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.acceuil_medcin: {
-                        startActivity(new Intent(getApplicationContext(),medecin.class));
+                    case R.id.acceuil_patient: {
+                        startActivity(new Intent(getApplicationContext(),Accueil.class));
                         break;
                     }
 
-                    case R.id.dashboard: {
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    case R.id.mesrdv: {
+                        startActivity(new Intent(getApplicationContext(),MesRendezVous.class));
                         break;
                     }
-                    case R.id.calmed: {
-                        startActivity(new Intent(getApplicationContext(),medcin_calendar.class));
+                    case R.id.calendrier: {
+                        startActivity(new Intent(getApplicationContext(),patient_rdv.class));
                         break;
                     }
-
-                    case R.id.gstsec: {
-                        startActivity(new Intent(getApplicationContext(),secretaire_create_account.class));
-                        break;
-                    }
-
-                    case R.id.rdvlist: {
-                        startActivity(new Intent(getApplicationContext(),rdv_medcin.class));
-                        break;
-                    }
-
-
                     case R.id.profile: {
                         startActivity(new Intent(getApplicationContext(),Profile.class));
                         break;
@@ -134,6 +117,4 @@ public class medecin extends AppCompatActivity {
         });
 
     }
-
-
 }

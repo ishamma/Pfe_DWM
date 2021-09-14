@@ -42,6 +42,7 @@ import java.util.List;
 
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.model.TableColumnDpWidthModel;
+import de.codecrafters.tableview.model.TableColumnModel;
 import de.codecrafters.tableview.model.TableColumnWeightModel;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> rdv = new ArrayList<>();
     ArrayList<String> spinList;
     ArrayList<PieEntry> rdvp;
+    int myBlue = Color.parseColor("#57A0D2");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,35 +80,6 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         //navigationView.setNavigationItemSelectedListener(this);
         //////////////////////////////////////////
-
-
-        /////Pie Code //////////////////////
-/*
-        PieChart piechart = findViewById(R.id.barChart);
-        ArrayList<PieEntry> rdv = new ArrayList<>();
-        rdv.add(new PieEntry(70,"Réserver"));
-        rdv.add(new PieEntry(10,"Annuler"));
-        rdv.add(new PieEntry(20,"Disponible"));
-
-
-        PieDataSet pieDataSet =new PieDataSet(rdv,"");
-        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        pieDataSet.setValueTextColor(Color.WHITE);
-        pieDataSet.setValueTextSize(8f);
-        piechart.setEntryLabelColor(Color.WHITE);
-        piechart.setEntryLabelTextSize(8f);
-
-        PieData pieData = new PieData(pieDataSet);
-
-        piechart.setData(pieData);
-        piechart.getDescription().setEnabled(false);
-        piechart.setCenterText("Etat de Rendez-vous");
-        //piechart.animate();
-        // XAxis xAxis  = piechart.getXAxis();
-        //  xAxis.setValueFormatter(new IndexAxisValueFormatter(months));
-*/
-
-        ////////////////////////////////////////////////////////
 
         Spinner spin1 = findViewById(R.id.spin1);
         Spinner spin2 = findViewById(R.id.spin2);
@@ -126,19 +100,21 @@ public class MainActivity extends AppCompatActivity {
 
                                 // TableView tableView = (TableView) findViewById(R.id.tableView);
                                 TableView<String[]> tableView = (TableView<String[]>) findViewById(R.id.tbl);
-                                tableView.setColumnCount(4);
-                                tableView.setHeaderBackgroundColor(Color.WHITE);
-                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom", "CIN", "Date RDV", "Heure"));
+                                tableView.setColumnCount(2);
 
-                                try {
+                                tableView.setHeaderBackgroundColor(myBlue);
+                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom et prenom", "Rendez-vous"));
+
+
+
+                                 try {
 
                                     String[][] takin = new String[PerformNetworkRequest.jsonarray.length()][4];
                                     for (int i = 0; i < PerformNetworkRequest.jsonarray.length(); i++) {
                                         JSONObject allClass = PerformNetworkRequest.jsonarray.getJSONObject(i);
                                         takin[i] = new String[]{allClass.getString("nom"),
-                                                allClass.getString("CIN"),
-                                                allClass.getString("date_rdv"),
-                                                allClass.getString("heure")
+                                                //allClass.getString("CIN"),
+                                                allClass.getString("date_rdv")+" à "+allClass.getString("heure")
 
                                         };
 
@@ -146,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                                     String liste = Collections.singletonList(takin).toString();
                                     Log.i("Takin list", "liste");
                                     tableView.setDataAdapter(new SimpleTableDataAdapter(MainActivity.this, takin));
+
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -340,9 +317,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 // TableView tableView = (TableView) findViewById(R.id.tableView);
                                 TableView<String[]> tableView = (TableView<String[]>) findViewById(R.id.tbl);
-                                tableView.setColumnCount(4);
-                                tableView.setHeaderBackgroundColor(Color.WHITE);
-                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom", "CIN", "Date RDV", "Heure"));
+                                tableView.setColumnCount(2);
+                                tableView.setHeaderBackgroundColor(myBlue);
+                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom et prenom", "Rendez-vous"));
 
                                 try {
 
@@ -350,9 +327,8 @@ public class MainActivity extends AppCompatActivity {
                                     for (int i = 0; i < PerformNetworkRequest.jsonarray.length(); i++) {
                                         JSONObject allClass = PerformNetworkRequest.jsonarray.getJSONObject(i);
                                         takin[i] = new String[]{allClass.getString("nom"),
-                                                allClass.getString("CIN"),
-                                                allClass.getString("date_rdv"),
-                                                allClass.getString("heure")
+                                                //allClass.getString("CIN"),
+                                                allClass.getString("date_rdv")+" à "+allClass.getString("heure")
 
                                         };
 
@@ -411,9 +387,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 // TableView tableView = (TableView) findViewById(R.id.tableView);
                                 TableView<String[]> tableView = (TableView<String[]>) findViewById(R.id.tbl);
-                                tableView.setColumnCount(4);
-                                tableView.setHeaderBackgroundColor(Color.WHITE);
-                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom", "CIN", "Date RDV", "Heure"));
+                                tableView.setColumnCount(2);
+                                tableView.setHeaderBackgroundColor(myBlue);
+                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom et prenom", "Rendez-vous"));
 
                                 try {
 
@@ -421,9 +397,8 @@ public class MainActivity extends AppCompatActivity {
                                     for (int i = 0; i < PerformNetworkRequest.jsonarray.length(); i++) {
                                         JSONObject allClass = PerformNetworkRequest.jsonarray.getJSONObject(i);
                                         takin[i] = new String[]{allClass.getString("nom"),
-                                                allClass.getString("CIN"),
-                                                allClass.getString("date_rdv"),
-                                                allClass.getString("heure")
+                                                //allClass.getString("CIN"),
+                                                allClass.getString("date_rdv")+" à "+allClass.getString("heure")
 
                                         };
 
@@ -482,9 +457,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 // TableView tableView = (TableView) findViewById(R.id.tableView);
                                 TableView<String[]> tableView = (TableView<String[]>) findViewById(R.id.tbl);
-                                tableView.setColumnCount(4);
-                                tableView.setHeaderBackgroundColor(Color.WHITE);
-                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom", "CIN", "Date RDV", "Heure"));
+                                tableView.setColumnCount(2);
+                                tableView.setHeaderBackgroundColor(myBlue);
+                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom et prenom", "Rendez-vous"));
 
                                 try {
 
@@ -492,9 +467,9 @@ public class MainActivity extends AppCompatActivity {
                                     for (int i = 0; i < PerformNetworkRequest.jsonarray.length(); i++) {
                                         JSONObject allClass = PerformNetworkRequest.jsonarray.getJSONObject(i);
                                         takin[i] = new String[]{allClass.getString("nom"),
-                                                allClass.getString("CIN"),
-                                                allClass.getString("date_rdv"),
-                                                allClass.getString("heure")
+                                               // allClass.getString("CIN"),
+                                                allClass.getString("date_rdv")+" à "+allClass.getString("heure")
+
 
                                         };
 
@@ -553,9 +528,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 // TableView tableView = (TableView) findViewById(R.id.tableView);
                                 TableView<String[]> tableView = (TableView<String[]>) findViewById(R.id.tbl);
-                                tableView.setColumnCount(4);
-                                tableView.setHeaderBackgroundColor(Color.WHITE);
-                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom", "CIN", "Date RDV", "Heure"));
+                                tableView.setColumnCount(2);
+                                tableView.setHeaderBackgroundColor(myBlue);
+                                tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(MainActivity.this, "Nom et prenom", "Rendez-vous"));
 
                                 try {
 
@@ -563,9 +538,9 @@ public class MainActivity extends AppCompatActivity {
                                     for (int i = 0; i < PerformNetworkRequest.jsonarray.length(); i++) {
                                         JSONObject allClass = PerformNetworkRequest.jsonarray.getJSONObject(i);
                                         takin[i] = new String[]{allClass.getString("nom"),
-                                                allClass.getString("CIN"),
-                                                allClass.getString("date_rdv"),
-                                                allClass.getString("heure")
+                                                //allClass.getString("CIN"),
+                                                allClass.getString("date_rdv")+" à "+allClass.getString("heure")
+
 
                                         };
 
@@ -630,27 +605,24 @@ public class MainActivity extends AppCompatActivity {
         rdvp = new ArrayList<PieEntry>();
         if (a != 0 || b != 0 || c != 0) {
             if (a != 0) {
-                rdvp.add(new PieEntry(a, "Réserver"));
+                rdvp.add(new PieEntry(a));
             }
             if (c != 0) {
-                rdvp.add(new PieEntry(c, "Disponible"));
+                rdvp.add(new PieEntry(c));
             }
 
             if (b != 0) {
-                rdvp.add(new PieEntry(b, "Annuler"));
+                rdvp.add(new PieEntry(b));
             }
         }
 
 
-        PieDataSet pieDataSet = new PieDataSet(rdvp, "");
+        PieDataSet pieDataSet = new PieDataSet(rdvp,"");
         pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         pieDataSet.setValueTextColor(Color.WHITE);
         pieDataSet.setValueTextSize(8f);
-        piechart.setEntryLabelColor(Color.WHITE);
-        piechart.setEntryLabelTextSize(8f);
-
+        //piechart.setEntryLabelColor(Color.WHITE);
         PieData pieData = new PieData(pieDataSet);
-
         piechart.setData(pieData);
         piechart.getDescription().setEnabled(false);
         piechart.setCenterText("Etat de Rendez-vous");
@@ -662,7 +634,9 @@ public class MainActivity extends AppCompatActivity {
     public  void Navigation(){
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        View header = navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.nom_menu);
+        username.setText(Session.user_name);
         // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 

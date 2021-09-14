@@ -13,7 +13,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,6 +24,7 @@ public class MesRendezVous extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private FrameLayout frameLayout;
     private Fragment Rdv_list;
+    notif_icon notif = new notif_icon();
     Toolbar toolbar;
 
     @Override
@@ -30,7 +34,16 @@ public class MesRendezVous extends AppCompatActivity {
         if(Session.id==0){
             startActivity(new Intent(this,login.class));
         }
-
+        /******notif icon*************/
+        notif.notif_nbr(this);
+        ImageView notif_cards=findViewById(R.id.notif_icon);
+        notif_cards.bringToFront();
+        notif_cards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                notif.notif_list_btn(MesRendezVous.this);
+            }
+        });
 
 
         frameLayout = findViewById(R.id.list_rdv);
@@ -62,7 +75,9 @@ public class MesRendezVous extends AppCompatActivity {
     public  void Navigation(){
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        View header = navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.nom_menu);
+        username.setText(Session.user_name);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 

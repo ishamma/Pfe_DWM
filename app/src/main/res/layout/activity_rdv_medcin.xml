@@ -5,7 +5,8 @@ xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/drawer_layoutpr"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".rdv_medcin">
+tools:context=".rdv_medcin"
+    android:background="@drawable/bg_design">
 
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout

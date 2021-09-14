@@ -12,8 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PFE_DWM"
         android:usesCleartextTraffic="true">
-        <activity android:name=".gestion_sec"></activity>
-        <activity android:name=".secretaire_create_account"/>
+        <activity android:name=".notif_patient_affichage"></activity>
+        <activity android:name=".notif_icon" />
+        <activity android:name=".gestion_sec" />
+        <activity android:name=".secretaire_create_account" />
         <activity android:name=".secretaire_account" />
         <activity android:name=".medcin_calendar" />
         <activity android:name=".rdv_medcin" />
@@ -29,7 +31,6 @@
         <activity android:name=".MesRendezVous" />
         <activity android:name=".Tabs" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".pieChart" />
         <activity android:name=".secretaire" />
         <activity android:name=".medecin" />
         <activity android:name=".nav_header" />

@@ -7,13 +7,14 @@ android:id="@+id/drawer_layout"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MesRendezVous"
-android:background="@color/white">
+    android:background="@color/white"
+    >
 
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@drawable/bg_design">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -23,6 +24,19 @@ android:background="@color/white">
             android:id="@+id/toolbarrdv"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="-38dp"
+            android:paddingRight="10dp">
+
+            <include
+                layout="@layout/activity_notif_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -40,7 +54,7 @@ android:background="@color/white">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:padding="20dp"
         >
 

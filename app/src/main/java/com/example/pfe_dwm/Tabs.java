@@ -16,7 +16,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -116,7 +118,9 @@ public class Tabs extends AppCompatActivity {
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        View header = navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.nom_menu);
+        username.setText(Session.user_name);
         // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 
@@ -134,6 +138,10 @@ public class Tabs extends AppCompatActivity {
                     }
                     case R.id.rdv: {
                         startActivity(new Intent(getApplicationContext(),Tabs.class));
+                        break;
+                    }
+                    case R.id.prf: {
+                        startActivity(new Intent(getApplicationContext(),Profile.class));
                         break;
                     }
                     case R.id.logOutSec: {

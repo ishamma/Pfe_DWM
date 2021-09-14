@@ -20,6 +20,7 @@ import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -228,7 +229,9 @@ public class create_calendar extends AppCompatActivity {
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        View header = navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.nom_menu);
+        username.setText(Session.user_name);
         // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Menu menu = navigationView.getMenu();
 
@@ -247,6 +250,10 @@ public class create_calendar extends AppCompatActivity {
                     }
                     case R.id.calendrier: {
                         startActivity(new Intent(getApplicationContext(),create_calendar.class));
+                        break;
+                    }
+                    case R.id.prf: {
+                        startActivity(new Intent(getApplicationContext(),Profile.class));
                         break;
                     }
 

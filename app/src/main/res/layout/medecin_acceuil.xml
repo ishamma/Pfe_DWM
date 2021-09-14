@@ -76,7 +76,7 @@ tools:context=".medecin">
                 android:orientation="vertical"
                 android:background="@drawable/bg_round">
                 <ImageButton
-                    android:id="@+id/callendar"
+                    android:id="@+id/calendar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/calender"
