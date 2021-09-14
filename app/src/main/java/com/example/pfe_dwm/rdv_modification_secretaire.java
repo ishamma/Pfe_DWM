@@ -83,21 +83,12 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
                                             @Override
                                             public void processFinish(JSONArray output) {
                                                 //Notification
-
                                                 String message = "Votre Demande de modification n'est pas acceptée ";
                                                 Log.i("Message : ",message);
                                                 String sql2 = "INSERT INTO `notification` ( `message`,  id_rdv) VALUES ('"+message+"','"+id_rdv_old+"') ";
-
                                                 Log.i("SQL : ",sql2);
-
-
-
-
-
                                                 HashMap<String, String> params2 = new HashMap<>();
                                                 params2.put("sql",sql2);
-
-
                                                 PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                                                     @Override
                                                     public void processFinish(JSONArray output) {
@@ -112,8 +103,6 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
                                                                 });
                                                         AlertDialog alert = builder.create();
                                                         alert.show();
-
-
 
                                                         Log.i("Position : ",String.valueOf(mData.get(position).getId()));
 
@@ -137,6 +126,7 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
                     }
                 });
                 request.execute();
+
 
 
                 //Toast.makeText(mContext.getApplicationContext(), "edit", Toast.LENGTH_SHORT).show();
