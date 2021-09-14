@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PFE_DWM"
         android:usesCleartextTraffic="true">
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".notif_patient_affichage" />
         <activity android:name=".notif_icon" />
         <activity android:name=".gestion_sec" />
