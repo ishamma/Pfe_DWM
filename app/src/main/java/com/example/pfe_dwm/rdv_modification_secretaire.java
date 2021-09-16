@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -92,6 +93,7 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
                                                 PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                                                     @Override
                                                     public void processFinish(JSONArray output) {
+                                                        new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail(), "Cabinet médical", message);
 
                                                         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                                                         builder.setMessage("Modification n'est pas acceptée")
@@ -151,7 +153,7 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
 
                         //Notification
 
-                        String message = "Votre Demande de modification est acceptée "+ mData.get(position).getDate_rdv() +" à "+mData.get(position).getTime()+" de "+mData.get(position).getPatient_name()+ "  ";
+                        String message = "Votre Demande de modification est acceptée "+ mData.get(position).getDate_rdv() +" à "+mData.get(position).getTime()+" de "+mData.get(position).getPatient_name().toUpperCase()+ "  ";
                         Log.i("Message : ",message);
                         String sql2 = "INSERT INTO `notification` ( `message`,  id_rdv) VALUES ('"+message+"',"+ mData.get(position).getId()+") ";
 
@@ -169,7 +171,7 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
                         PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                             @Override
                             public void processFinish(JSONArray output) {
-
+                                new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail(), "Cabinet médical", message);
                                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                                 builder.setMessage("Modification acceptée")
                                         .setCancelable(false)

@@ -7,13 +7,15 @@ public class modificationData {
     public String time;
     public String date_rdv;
     public String cin;
+    private String email;
 
-    public modificationData(String patient_name,int id, String time, String date_rdv, String cin) {
+    public modificationData(String patient_name,int id, String time, String date_rdv, String cin,String email) {
         this.patient_name = patient_name;
         this.time = time;
         this.date_rdv = date_rdv;
         this.cin = cin;
         this.id=id;
+        this.email=email;
     }
 
     public int getId() {
@@ -54,5 +56,13 @@ public class modificationData {
 
     public void setCin(String cin) {
         this.cin = cin;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

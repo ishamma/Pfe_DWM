@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -206,7 +207,6 @@ public class patient_rdv extends AppCompatActivity {
 
                                             sql3  ="INSERT INTO `rendez_vous`(`date_rdv`, `id_secretaire`, `id_patient`, `id_creneaux`, `id_medcin`, `etat`) VALUES ('"+Ndatei+"',2,"+idpp+","+idc+",1,'Reserver')" ;
 
-
                                             /// params for sql requete
                                             HashMap<String, String> params3 = new HashMap<>();
                                             params3.put("sql",sql3);
@@ -216,7 +216,8 @@ public class patient_rdv extends AppCompatActivity {
 
                                                 @Override
                                                 public void processFinish(JSONArray output) {
-
+                                                    String message = "Vous avez reserver un rendez-vous le "+Ndatei+" à "+index;
+                                                    new SendMailTask(patient_rdv.this).execute(Session.email, "Cabinet médical", message);
 
                                                     AlertDialog.Builder builder = new AlertDialog.Builder(patient_rdv.this);
                                                     builder.setMessage("Rendez-vous reservé")
@@ -296,6 +297,7 @@ public class patient_rdv extends AppCompatActivity {
 
                         fill(ih);
                         ih.clear();
+
                     }
                 });
                 request.execute();

@@ -37,6 +37,7 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button btn1 = findViewById(R.id.btn_log);
+
         register = findViewById(R.id.textView6);
 
         email = findViewById(R.id.txtemail);
@@ -56,14 +57,7 @@ public class login extends AppCompatActivity {
                 PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
                     @Override
                     public void processFinish(JSONArray output) {
-                        //for(int i =0 ; i<output.length();i++){
-                        //try {
-                        // Log.v("name",output.getJSONObject(i).getString("NOM"));
-                        // } catch (JSONException e) {
-                        // e.printStackTrace();
-                        // }
-                        //}
-                        if (output != null) {
+                         if (output != null) {
                             try {
                                 if (output.getJSONObject(0).getInt("user_id") != 0) {
                                     String nom, email, date_creation,password;
@@ -97,6 +91,18 @@ public class login extends AppCompatActivity {
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(login.this);
+                                    builder.setMessage("Email ou mot de pass est incorrecte ")
+                                            .setCancelable(false)
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    startActivity(new Intent(login.this,login.class));
+                                                }
+                                            });
+                                    AlertDialog alert = builder.create();
+
+                                    alert.show();
+
                             }
                         }
                     }

@@ -56,19 +56,6 @@ EditText nom ,prenom,cin,tele,adresse,date,email,password;
                 /// params for sql requete
                 HashMap<String, String> params = new HashMap<>();
                 params.put("sql",sql);
-//                params.put("nom",nom.getText().toString());
-//                params.put("prenom",prenom.getText().toString());
-//                params.put("cin",cin.getText().toString());
-//                params.put("tele",tele.getText().toString());
-//                params.put("cnss",cnss.getText().toString());
-//                params.put("adresse",adresse.getText().toString());
-//                params.put("date",date.getText().toString());
-//                params.put("email",email.getText().toString());
-//                params.put("password",password.getText().toString());
-//                params.put("role","3");
-                //SendOnChannel1(v);
-
-              //  PerformNetworkRequest request = new PerformNetworkRequest("https://ihne.000webhostapp.com/api.php?apicall=register", params, new PerformNetworkRequest.AsyncResponse() {
                     PerformNetworkRequest request = new PerformNetworkRequest(Api.query, params, new PerformNetworkRequest.AsyncResponse() {
 
 
@@ -106,6 +93,9 @@ EditText nom ,prenom,cin,tele,adresse,date,email,password;
 
                                                 @Override
                                                 public void processFinish(JSONArray output) {
+                                                    String message = "Votre login est : "+email.getText().toString()+" et votre mot de pass est : "+password.getText().toString();
+                                                    new SendMailTask(register.this).execute(email.getText().toString(), "Cabinet médical", message);
+
                                                     Intent i = new Intent(register.this,login.class);
                                                     startActivity(i);
 

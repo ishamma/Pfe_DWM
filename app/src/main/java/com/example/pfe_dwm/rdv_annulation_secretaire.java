@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -56,12 +57,59 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
         holder.annuler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String sql1 = "Update rendez_vous set etat='Reserver' where id_rdv = '"+mData.get(position).getId()+"'";
+                HashMap<String, String> params1 = new HashMap<>();
+                params1.put("sql",sql1);
+                Log.i("hhhhhh",sql1);
+                PerformNetworkRequest request1 = new PerformNetworkRequest(Api.query, params1, new PerformNetworkRequest.AsyncResponse() {
+                    @Override
+                    public void processFinish(JSONArray output) {
 
 
-                //Toast.makeText(mContext.getApplicationContext(), "edit", Toast.LENGTH_SHORT).show();
-                Log.i("Position",String.valueOf(mData.get(position).getId()) );
-                Log.i("Position",String.valueOf(position) );
-                Toast.makeText(mContext.getApplicationContext(), "annuler", Toast.LENGTH_SHORT).show();
+                        //Notification
+
+                        String message = "Votre Demande d''annulation n'est pas acceptée "+ mData.get(position).getDate_rdv() +" à "+mData.get(position).getTime()+" de "+mData.get(position).getPatient_name().toUpperCase()+ "  ";
+                        Log.i("Message : ",message);
+                        String sql2 = "INSERT INTO `notification` ( `message`,  id_rdv) VALUES ('"+message+"',"+ mData.get(position).getId()+") ";
+
+                        Log.i("SQL : ",sql2);
+
+                        HashMap<String, String> params2 = new HashMap<>();
+                        params2.put("sql",sql2);
+
+
+                        PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
+                            @Override
+                            public void processFinish(JSONArray output) {
+                                new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail_patient(), "Cabinet médical", message);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                                builder.setMessage("Annulation est refusée avec succès")
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                mContext.startActivity(new Intent(mContext.getApplicationContext(),Tabs.class));
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+
+
+                                Log.i("Position : ",String.valueOf(mData.get(position).getId()));
+
+                                remove(position);
+
+
+                            }
+                        });
+                        request2.execute();
+
+
+
+
+                    }
+                });
+                request1.execute();
             }
 
         });
@@ -80,7 +128,7 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
 
                         //Notification
 
-                        String message = "Votre Demande d''annulation est acceptée "+ mData.get(position).getDate_rdv() +" à "+mData.get(position).getTime()+" de "+mData.get(position).getPatient_name()+ "  ";
+                        String message = "Votre Demande d''annulation est acceptée "+ mData.get(position).getDate_rdv() +" à "+mData.get(position).getTime()+" de "+mData.get(position).getPatient_name().toUpperCase()+ "  ";
                         Log.i("Message : ",message);
                         String sql2 = "INSERT INTO `notification` ( `message`,  id_rdv) VALUES ('"+message+"',"+ mData.get(position).getId()+") ";
 
@@ -93,6 +141,7 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
                         PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                             @Override
                             public void processFinish(JSONArray output) {
+                                new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail_patient(), "Cabinet médical", message);
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                                 builder.setMessage("Annulation avec succès")
@@ -124,10 +173,6 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
                 request.execute();
 
 
-                //Toast.makeText(mContext.getApplicationContext(), "edit", Toast.LENGTH_SHORT).show();
-                Log.i("Position",String.valueOf(mData.get(position).getId()) );
-                Log.i("Position",String.valueOf(position) );
-                Toast.makeText(mContext.getApplicationContext(), "valider", Toast.LENGTH_SHORT).show();
 
             }
         });

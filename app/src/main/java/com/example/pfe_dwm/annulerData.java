@@ -6,13 +6,23 @@ public class annulerData {
     public String time;
     public String date_rdv;
     public String cin;
+    public String email_patient;
 
-    public annulerData(String patient_name,int id, String time, String date_rdv, String cin) {
+    public String getEmail_patient() {
+        return email_patient;
+    }
+
+    public void setEmail_patient(String email_patient) {
+        this.email_patient = email_patient;
+    }
+
+    public annulerData(String patient_name, int id, String time, String date_rdv, String cin, String email_patient) {
         this.patient_name = patient_name;
         this.time = time;
         this.date_rdv = date_rdv;
         this.cin = cin;
         this.id=id;
+        this.email_patient=email_patient;
     }
 
     public int getId() {

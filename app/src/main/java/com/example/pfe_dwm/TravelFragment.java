@@ -34,7 +34,7 @@ public class TravelFragment extends Fragment {
 
     int idn = Session.id;
 
-    String sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,secretaire s, `account` a , patient p WHERE r.id_creneaux=c.id_creneaux and r.id_secretaire=s.id_secretaire" +
+    String sql = "SELECT *,(SELECT email from account,patient where account.user_id=patient.id_account and patient.CIN=p.CIN) as email FROM `rendez_vous` r ,`creneaux` c,secretaire s, `account` a , patient p WHERE r.id_creneaux=c.id_creneaux and r.id_secretaire=s.id_secretaire" +
             " and s.id_account=a.user_id and r.id_patient = p.id_patient and r.etat='Pre-Annuler' and a.user_id='" + idn + "'";
 
     // TODO: Rename parameter arguments, choose names that match
@@ -88,7 +88,7 @@ public class TravelFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 Log.v("haaa", query);
 
-                sql = "SELECT * FROM `rendez_vous` r ,`creneaux` c,secretaire s, `account` a , patient p WHERE r.id_creneaux=c.id_creneaux and r.id_secretaire=s.id_secretaire " +
+                sql = "SELECT *,(SELECT email from account,patient where account.user_id=patient.id_account and patient.CIN=p.CIN) as email FROM `rendez_vous` r ,`creneaux` c,secretaire s, `account` a , patient p WHERE r.id_creneaux=c.id_creneaux and r.id_secretaire=s.id_secretaire " +
                         "and s.id_account=a.user_id and r.id_patient = p.id_patient and r.etat='Pre-Annuler' and  CIN='" + query + "' ";
                 stuff(sql);
                 return false;
@@ -123,8 +123,9 @@ public class TravelFragment extends Fragment {
                         String heure = Tache.getString("heure");
                         String cin = Tache.getString("CIN");
                         int id=Tache.getInt("id_rdv");
+                        String email_patient=Tache.getString("email");
 
-                        lstTache.add(new annulerData(nomPatient,id,date_rdv, heure, cin));
+                        lstTache.add(new annulerData(nomPatient,id,date_rdv, heure, cin,email_patient));
 
                     } catch (JSONException e) {
                         e.printStackTrace();

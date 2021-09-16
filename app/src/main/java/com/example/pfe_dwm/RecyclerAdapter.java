@@ -1,6 +1,7 @@
 package com.example.pfe_dwm;
 
 
+import android.app.Activity;
 import android.content.Context;
 
 import androidx.appcompat.app.AlertDialog;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -67,7 +69,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
 
                         //Notification
 
-                        String message = "Demande d''annulation de Rendez-vous "+ mData.get(position).getDate() +" à "+mData.get(position).getId_creneaux()+" de "+mData.get(position).getNom()+ "  ";
+                        String message = "Demande d''annulation de Rendez-vous "+ mData.get(position).getDate() +" à "+mData.get(position).getId_creneaux()+" de "+mData.get(position).getNom().toUpperCase()+ "  ";
                         Log.i("Message : ",message);
                         String sql2 = "INSERT INTO `notification` ( `message`,  id_rdv) VALUES ('"+message+"',"+ mData.get(position).getId()+") ";
 
@@ -80,7 +82,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
                         PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                             @Override
                             public void processFinish(JSONArray output) {
-
+                                new SendMailTask((Activity)mContext).execute(Session.email, "Cabinet médical", message);
 
                                 Toast.makeText(mContext.getApplicationContext(), "Votre demande est en cours de traitement", Toast.LENGTH_SHORT).show();
 
@@ -130,7 +132,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
 
                         //Notification
 
-                        String message = "Demande de Modification de Rendez-vous "+ mData.get(position).getDate() +" à "+mData.get(position).getId_creneaux()+" de "+mData.get(position).getNom()+ "  ";
+                        String message = "Demande de Modification de Rendez-vous "+ mData.get(position).getDate() +" à "+mData.get(position).getId_creneaux()+" de "+mData.get(position).getNom().toUpperCase()+ "  ";
                         Log.i("Message : ",message);
                         String sql2 = "INSERT INTO `notification` ( `message`,  id_rdv) VALUES ('"+message+"',"+ mData.get(position).getId()+") ";
 
@@ -143,6 +145,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<com.example.pfe_dwm.Re
                         PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                             @Override
                             public void processFinish(JSONArray output) {
+                                new SendMailTask((Activity)mContext).execute(Session.email, "Cabinet médical", message);
 
 
                                 Intent intent=new Intent(mContext.getApplicationContext(),patient_rdv.class);
