@@ -7,9 +7,8 @@
     <string name="calendar">Hello blank fragment</string>
     <string name="reserve">Hello blank fragment</string>
     <string name="notif">Demande de Modification de Rendez-vous 2021-09-14 à 09:00 de nouhaila el arroum</string>
-    <string name="intro">L’informatique cette science de travail rationnel de l’information est considérée comme le
-support des connaissances dans les domaines scientifiques, économiques et sociaux
-notamment à l’aide des machines automatique.</string>
+    <string name="intro">Cabinet médical met à votre disposition ses équipes médicales pluridisciplinaires et
+        vous proposes différentes prestations pour vos besoins de santé urgents !</string>
     <string-array name="array_name">
         <item>---------------</item>
         <item>Par Année</item>

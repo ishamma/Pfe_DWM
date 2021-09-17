@@ -11,7 +11,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/acceuil">
+        android:background="@drawable/bg_patient">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="53dp"
         android:padding="20dp"
         >
 
@@ -57,9 +57,11 @@
             android:layout_height="wrap_content"
             android:textSize="25dp"
             android:textStyle="bold"
+            android:layout_marginTop="30dp"
             android:textColor="@color/ihneBlue"
             android:layout_marginBottom="30dp"
-            android:text="Tonny Tonny chopper" />
+            android:gravity="center"
+            android:text="Bienvenu chez Docteur\nTonny Tonny chopper" />
 
         <TextView
             android:id="@+id/textView7"
@@ -67,14 +69,19 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="@string/intro"
-            android:textColor="@color/black" />
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="385dp"
+            android:gravity="center"
+            />
 
         <Button
             android:id="@+id/rserve_acceuil"
-            android:layout_width="333dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Réserver votre rendez-vous" />
+            android:text="Prendre rendez-vous"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView

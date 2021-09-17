@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -30,6 +31,15 @@ public class secretaire extends AppCompatActivity {
         if(Session.id==0){
             startActivity(new Intent(this,login.class));
         }
+
+        Button commencer = findViewById(R.id.commencer);
+        commencer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(secretaire.this,Tabs.class));
+
+            }
+        });
         Navigation();
         //////////////////////Button pour ouvrir naviagtion ////////////////////
         toolbar = findViewById(R.id.toolbar);
