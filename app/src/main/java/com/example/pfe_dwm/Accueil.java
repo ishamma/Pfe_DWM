@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -106,7 +107,8 @@ import java.util.HashMap;
                  this,mDrawerLayout,toolbar,R.string.app_name,R.string.app_name);
          mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
          actionBarDrawerToggle.syncState();
-         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
          //navigationView.setNavigationItemSelectedListener(this);
          //////////////////////////////////////////
          NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);

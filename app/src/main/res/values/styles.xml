@@ -2,13 +2,12 @@
 <resources>
 
     <style name="app" parent="Theme.AppCompat.Light.NoActionBar">
-
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/white</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
 
-
     </style>
+
 
 
 </resources>
