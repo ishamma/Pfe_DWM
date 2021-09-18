@@ -1,6 +1,9 @@
 package com.example.pfe_dwm;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,8 +13,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -81,9 +91,16 @@ EditText nom ,prenom,cin,tele,adresse,date,email,password;
                                             idac = account.getInt("id_account");
 
 
-                                            Log.i("id account",String.valueOf(idac));
 
-                                            String sql3 = "INSERT INTO `patient`( `nom_patient`, `prenom_patient`, `CIN`, `adress_patient`, `tel_patient`, `date_naiss`,`id_account`) VALUES ('"+nom.getText().toString()+"','"+prenom.getText().toString()+"','"+cin.getText().toString()+"','"+adresse.getText().toString()+"','"+tele.getText().toString()+"','"+date.getText().toString()+"','"+idac+"');" ;
+                                        DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
+                                        df.setTimeZone(TimeZone.getDefault()); // Whatever time zone you want to use
+                                        Date datenaiss = new java.sql.Date(df.parse(date.getText().toString()).getTime());
+
+
+                                            Log.i("id account",String.valueOf(idac));
+                                             Log.i("Date ",String.valueOf(datenaiss));
+
+                                            String sql3 = "INSERT INTO `patient`( `nom_patient`, `prenom_patient`, `CIN`, `adress_patient`, `tel_patient`, `date_naiss`,`id_account`) VALUES ('"+nom.getText().toString()+"','"+prenom.getText().toString()+"','"+cin.getText().toString()+"','"+adresse.getText().toString()+"','"+tele.getText().toString()+"','"+datenaiss+"','"+idac+"');" ;
                                             /// params for sql requete
                                             HashMap<String, String> params3 = new HashMap<>();
                                             params3.put("sql",sql3);
@@ -104,8 +121,18 @@ EditText nom ,prenom,cin,tele,adresse,date,email,password;
                                             request3.execute();
 
 
-                                    } catch (JSONException e) {
+                                    } catch (JSONException | ParseException e) {
                                         e.printStackTrace();
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
+                                        builder.setMessage("Format de date de naissance est incorrect ")
+                                                .setCancelable(false)
+                                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+
+                                                    }
+                                                });
+                                        AlertDialog alert = builder.create();
+                                        alert.show();
                                     }
                                 }
 

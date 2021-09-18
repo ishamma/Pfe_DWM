@@ -134,7 +134,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_round"
                     android:ems="10"
-                    android:hint="Entrez votre date de naissance"
+                    android:hint="ex : 30/05/2000"
                     android:inputType="date"
                     android:paddingLeft="20dp" />
 
