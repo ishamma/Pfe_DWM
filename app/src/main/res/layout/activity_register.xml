@@ -109,13 +109,13 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/adresse"
+                    android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_round"
                     android:ems="10"
-                    android:hint="Entrez votre adresse"
+                    android:hint="Email@gmail.com"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="20dp" />
 
@@ -134,7 +134,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_round"
                     android:ems="10"
-                    android:hint="Entrez votre date de naissance"
+                    android:hint="JJ/MM/YYYY"
                     android:inputType="date"
                     android:paddingLeft="20dp" />
 
@@ -154,7 +154,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_round"
                     android:ems="10"
-                    android:hint="Entrez votre télephone"
+                    android:hint="0600000000"
                     android:inputType="number"
                     android:paddingLeft="20dp" />
 
@@ -167,13 +167,13 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/adresse"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_round"
                     android:ems="10"
-                    android:hint="Entrez votre email"
+                    android:hint="Entrez votre adresse"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="20dp" />
 
