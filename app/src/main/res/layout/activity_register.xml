@@ -109,13 +109,13 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/adresse"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_round"
                     android:ems="10"
-                    android:hint="Email@gmail.com"
+                    android:hint="Entrez votre adresse"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="20dp" />
 
@@ -134,7 +134,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_round"
                     android:ems="10"
-                    android:hint="JJ/MM/YYYY"
+                    android:hint="ex : 30/05/2000"
                     android:inputType="date"
                     android:paddingLeft="20dp" />
 
@@ -154,7 +154,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_round"
                     android:ems="10"
-                    android:hint="0600000000"
+                    android:hint="Entrez votre télephone"
                     android:inputType="number"
                     android:paddingLeft="20dp" />
 
@@ -167,13 +167,13 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/adresse"
+                    android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_round"
                     android:ems="10"
-                    android:hint="Entrez votre adresse"
+                    android:hint="Entrez votre email"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="20dp" />
 
