@@ -93,7 +93,7 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
                                                 PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                                                     @Override
                                                     public void processFinish(JSONArray output) {
-                                                        new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail(), "Cabinet médical", message);
+                                                        new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail(), Session.subject, message);
 
                                                         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                                                         builder.setMessage("Modification n'est pas acceptée")
@@ -171,7 +171,7 @@ public class rdv_modification_secretaire extends RecyclerView.Adapter<com.exampl
                         PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                             @Override
                             public void processFinish(JSONArray output) {
-                                new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail(), "Cabinet médical", message);
+                                new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail(), Session.subject, message);
                                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                                 builder.setMessage("Modification acceptée")
                                         .setCancelable(false)

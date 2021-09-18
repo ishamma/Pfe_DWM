@@ -30,9 +30,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 public class patient_rdv extends AppCompatActivity {
@@ -217,7 +221,7 @@ public class patient_rdv extends AppCompatActivity {
                                                 @Override
                                                 public void processFinish(JSONArray output) {
                                                     String message = "Vous avez reserver un rendez-vous le "+Ndatei+" à "+index;
-                                                    new SendMailTask(patient_rdv.this).execute(Session.email, "Cabinet médical", message);
+                                                    new SendMailTask(patient_rdv.this).execute(Session.email, Session.subject, message);
 
                                                     AlertDialog.Builder builder = new AlertDialog.Builder(patient_rdv.this);
                                                     builder.setMessage("Rendez-vous reservé")
@@ -259,7 +263,9 @@ public class patient_rdv extends AppCompatActivity {
         });
 
 
-
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Ndatei = df.format(c);
         calendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {

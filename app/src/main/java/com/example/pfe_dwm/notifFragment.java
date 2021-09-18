@@ -81,7 +81,7 @@ public class notifFragment extends Fragment {
 
     public void stuff(){
         int idn=Session.id;
-        String sql = "SELECT * FROM `notification`";
+        String sql = "SELECT * FROM `notification` n,rendez_vous r, patient p, account a WHERE n.id_rdv=r.id_rdv and r.id_patient=p.id_patient  and p.id_account=a.user_id and a.user_id='"+Session.id+"'";
 
         HashMap<String, String> params = new HashMap<>();
         params.put("sql", sql);

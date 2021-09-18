@@ -93,8 +93,8 @@ EditText nom ,prenom,cin,tele,adresse,date,email,password;
 
                                                 @Override
                                                 public void processFinish(JSONArray output) {
-                                                    String message = "Votre login est : "+email.getText().toString()+" et votre mot de pass est : "+password.getText().toString();
-                                                    new SendMailTask(register.this).execute(email.getText().toString(), "Cabinet médical", message);
+                                                    String message = "Bonjour '"+prenom.getText().toString()+"',\n Votre login est : "+email.getText().toString()+" et votre mot de pass est : "+password.getText().toString();
+                                                    new SendMailTask(register.this).execute(email.getText().toString(), "Votre compte est actif", message);
 
                                                     Intent i = new Intent(register.this,login.class);
                                                     startActivity(i);

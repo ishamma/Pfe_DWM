@@ -81,7 +81,7 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
                         PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                             @Override
                             public void processFinish(JSONArray output) {
-                                new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail_patient(), "Cabinet médical", message);
+                                new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail_patient(), Session.subject , message);
                                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                                 builder.setMessage("Annulation est refusée avec succès")
                                         .setCancelable(false)
@@ -141,7 +141,7 @@ public class rdv_annulation_secretaire extends RecyclerView.Adapter<com.example.
                         PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                             @Override
                             public void processFinish(JSONArray output) {
-                                new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail_patient(), "Cabinet médical", message);
+                                new SendMailTask((Activity)mContext).execute(mData.get(position).getEmail_patient(),Session.subject, message);
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                                 builder.setMessage("Annulation avec succès")
