@@ -124,7 +124,7 @@ EditText nom ,prenom,cin,tele,adresse,date,email,password;
                                     } catch (JSONException | ParseException e) {
                                         e.printStackTrace();
                                         AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
-                                        builder.setMessage("Format de date de naissance est incorrect ")
+                                        builder.setMessage("Format de date de naissance est incorrect \n (jj/mm/aaaa )")
                                                 .setCancelable(false)
                                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int id) {
