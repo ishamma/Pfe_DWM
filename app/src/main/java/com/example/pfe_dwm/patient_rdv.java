@@ -369,6 +369,16 @@ public class patient_rdv extends AppCompatActivity {
         timeap = findViewById(R.id.radioap);
         time.removeAllViews();
         timeap.removeAllViews();
+        if(lst.size()<4){
+            for ( int i = 0 ; i < lst.size() ; i++ ) {
+                RadioButton rb = new RadioButton(getApplicationContext());
+                rb.setText(lst.get(i));
+                rb.setHint("22");
+                time.addView(rb);
+            }
+
+        }
+        else{
         for ( int i = 0 ; i < 4 ; i++ ) {
             RadioButton rb = new RadioButton(getApplicationContext());
             rb.setText(lst.get(i));
@@ -376,13 +386,15 @@ public class patient_rdv extends AppCompatActivity {
             time.addView(rb);
         }
 
-
-        for ( int i = 4 ; i <lst.size() ; i++ ) {
-            RadioButton rb = new RadioButton(getApplicationContext());
-            rb.setText(lst.get(i));
-            rb.setHint("22");
-            timeap.addView(rb);
+            for ( int i = 4 ; i <lst.size() ; i++ ) {
+                RadioButton rb = new RadioButton(getApplicationContext());
+                rb.setText(lst.get(i));
+                rb.setHint("22");
+                timeap.addView(rb);
+            }
         }
+
+
         lst.clear();
 
         }
