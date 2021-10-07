@@ -336,7 +336,7 @@ public class Profile extends AppCompatActivity {
             public void processFinish(JSONArray output) {
                 String sql2 = "UPDATE `account` SET `user_name`='"+nom.getText()+"',`email`='"+email.getText()+"',`password`='"+psw.getText()+"' WHERE id_account='"+Session.id+"'";
                 HashMap<String, String> params2 = new HashMap<String, String>();
-                params2.put("sql", sql2);
+                params2.put("sql2", sql2);
 
                 PerformNetworkRequest request2 = new PerformNetworkRequest(Api.query, params2, new PerformNetworkRequest.AsyncResponse() {
                     @Override

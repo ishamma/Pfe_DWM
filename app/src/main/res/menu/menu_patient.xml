@@ -20,7 +20,7 @@
         android:title="Gestion profile" />
     <item
         android:icon="@drawable/ic_baseline_power_settings_new_24"
-        android:title="Log Out"
+        android:title="Se déconnecter "
         android:id="@+id/log_out"
         />
 

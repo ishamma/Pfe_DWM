@@ -7,7 +7,7 @@
 
     <item android:icon="@drawable/dashboard"
         android:id="@+id/dashboard"
-        android:title="Dashboard"/>
+        android:title="Tableau de bord"/>
 
     <item android:icon="@drawable/list"
         android:id="@+id/rdvlist"
@@ -29,7 +29,7 @@
     <item
         android:id="@+id/log_out"
     android:icon="@drawable/ic_baseline_power_settings_new_24"
-    android:title="Log Out" />
+    android:title="Se déconnecter" />
 
 
 </menu>

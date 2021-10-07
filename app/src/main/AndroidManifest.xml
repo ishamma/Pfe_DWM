@@ -17,6 +17,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".SendMailTask"></activity>
         <activity android:name=".SplashActivity">
+            <!--bash had lactivite tkoun hya lpage d'index fl app-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
